@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard UI Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Gallery-specific styles ── */
+    body { display: flex; flex-direction: column; align-items: center; }
+
+    .hero {
+      width: 100%;
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse at top, rgba(99,102,241,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-h);
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 { margin-bottom: 0.75rem; }
+    .hero p {
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .hero-stat .value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .hero-stat .label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── Gallery Grid ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      width: 100%;
+      padding: 0 2rem 4rem;
+    }
+
+    .gallery-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .gallery-card:hover {
+      border-color: var(--border2);
+      box-shadow: var(--glow);
+      transform: translateY(-3px);
+    }
+
+    /* Dashboard preview thumbnail */
+    .card-preview {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .preview-analytics {
+      background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    }
+    .preview-finance {
+      background: linear-gradient(135deg, #064e3b 0%, #0f1117 100%);
+    }
+    .preview-lifeos {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0f1117 100%);
+    }
+
+    /* Mini chart lines in preview */
+    .preview-chart {
+      position: absolute;
+      bottom: 20px; left: 20px; right: 20px;
+      height: 80px;
+    }
+    .preview-bar-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 100%;
+    }
+    .preview-bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      background: rgba(99,102,241,0.5);
+    }
+    .preview-kpi-row {
+      position: absolute;
+      top: 16px; left: 16px; right: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .preview-kpi {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .preview-kpi .pk-label {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 3px;
+    }
+    .preview-kpi .pk-value {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+    }
+    .preview-donut {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 70px;
+      height: 70px;
+    }
+    .preview-habits {
+      position: absolute;
+      bottom: 16px; left: 16px; right: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .preview-habit-row {
+      display: flex;
+      gap: 4px;
+    }
+    .preview-habit-dot {
+      width: 14px; height: 14px;
+      border-radius: 3px;
+    }
+    .preview-line {
+      position: absolute;
+      bottom: 20px; left: 16px; right: 16px;
+    }
+    svg.sparkline { width: 100%; height: 60px; }
+
+    .card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 0.75rem;
+    }
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.25rem;
+    }
+    .card-meta {
+      font-size: 0.75rem;
+      color: var(--muted2);
+    }
+    .btn-view {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0.55rem 1.1rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-view:hover {
+      background: var(--accent-h);
+      box-shadow: 0 0 20px rgba(99,102,241,0.4);
+    }
+
+    /* Footer */
+    .site-footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted2);
+    }
+
+    @media (max-width: 900px) {
+      .gallery { grid-template-columns: 1fr; max-width: 480px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">✦ UI Template Library</div>
+    <h1>Dashboard UI Explorer</h1>
+    <p>A curated collection of dark-mode dashboard templates. Browse, explore, and get inspired.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="value">3</span><span class="label">Templates</span></div>
+      <div class="hero-stat"><span class="value">Dark</span><span class="label">Theme</span></div>
+      <div class="hero-stat"><span class="value">Free</span><span class="label">to Use</span></div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <main class="gallery">
+
+    <!-- Analytics Card -->
+    <a href="dashboards/analytics.html" class="gallery-card">
+      <div class="card-preview preview-analytics">
+        <div class="preview-kpi-row">
+          <div class="preview-kpi"><div class="pk-label">Users</div><div class="pk-value">84.2K</div></div>
+          <div class="preview-kpi"><div class="pk-label">Revenue</div><div class="pk-value">$142K</div></div>
+          <div class="preview-kpi"><div class="pk-label">Conv.</div><div class="pk-value">3.4%</div></div>
+        </div>
+        <div class="preview-chart">
+          <div class="preview-bar-row">
+            <div class="preview-bar" style="height:40%;background:rgba(99,102,241,0.4)"></div>
+            <div class="preview-bar" style="height:60%;background:rgba(99,102,241,0.5)"></div>
+            <div class="preview-bar" style="height:45%;background:rgba(99,102,241,0.4)"></div>
+            <div class="preview-bar" style="height:75%;background:rgba(99,102,241,0.6)"></div>
+            <div class="preview-bar" style="height:55%;background:rgba(99,102,241,0.5)"></div>
+            <div class="preview-bar" style="height:90%;background:rgba(99,102,241,0.7)"></div>
+            <div class="preview-bar" style="height:70%;background:rgba(99,102,241,0.6)"></div>
+            <div class="preview-bar" style="height:85%;background:rgba(34,211,238,0.65)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-header">
+          <span class="card-title">Analytics Dashboard</span>
+          <span class="tag">Data</span>
+        </div>
+        <p class="card-desc">KPIs, traffic trends, channel breakdown, and recent activity log. Built for data-driven monitoring.</p>
+        <div class="card-footer">
+          <span class="card-meta">4 widgets · Chart.js</span>
+          <span class="btn-view">View →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Finance Card -->
+    <a href="dashboards/finance.html" class="gallery-card">
+      <div class="card-preview preview-finance">
+        <div class="preview-kpi-row">
+          <div class="preview-kpi"><div class="pk-label">Net Worth</div><div class="pk-value">$284K</div></div>
+          <div class="preview-kpi"><div class="pk-label">Return</div><div class="pk-value">+18.4%</div></div>
+          <div class="preview-kpi"><div class="pk-label">Income</div><div class="pk-value">$9.2K</div></div>
+        </div>
+        <div class="preview-line" style="bottom:16px">
+          <svg class="sparkline" viewBox="0 0 200 60" preserveAspectRatio="none">
+            <polyline points="0,50 30,42 60,38 90,30 120,25 150,18 200,10"
+              fill="none" stroke="rgba(52,211,153,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+            <polygon points="0,50 30,42 60,38 90,30 120,25 150,18 200,10 200,60 0,60"
+              fill="rgba(52,211,153,0.08)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-header">
+          <span class="card-title">Finance Dashboard</span>
+          <span class="tag green">Finance</span>
+        </div>
+        <p class="card-desc">Net worth tracker, portfolio allocation, income vs. expenses, and holdings table with P&L colors.</p>
+        <div class="card-footer">
+          <span class="card-meta">4 widgets · Chart.js</span>
+          <span class="btn-view">View →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Life OS Card -->
+    <a href="dashboards/lifeOS.html" class="gallery-card">
+      <div class="card-preview preview-lifeos">
+        <div class="preview-habits" style="top:16px;bottom:auto">
+          <div class="preview-kpi-row" style="margin-bottom:4px">
+            <div class="preview-kpi"><div class="pk-label">Goals</div><div class="pk-value">4 Active</div></div>
+            <div class="preview-kpi"><div class="pk-label">Streak</div><div class="pk-value">12 days</div></div>
+            <div class="preview-kpi"><div class="pk-label">Tasks</div><div class="pk-value">6/8 Done</div></div>
+          </div>
+        </div>
+        <div class="preview-habits">
+          <div class="preview-habit-row">
+            <div class="preview-habit-dot" style="background:rgba(99,102,241,0.9)"></div>
+            <div class="preview-habit-dot" style="background:rgba(99,102,241,0.9)"></div>
+            <div class="preview-habit-dot" style="background:rgba(99,102,241,0.3)"></div>
+            <div class="preview-habit-dot" style="background:rgba(99,102,241,0.9)"></div>
+            <div class="preview-habit-dot" style="background:rgba(99,102,241,0.9)"></div>
+            <div class="preview-habit-dot" style="background:rgba(99,102,241,0.9)"></div>
+            <div class="preview-habit-dot" style="background:rgba(99,102,241,0.9)"></div>
+          </div>
+          <div class="preview-habit-row">
+            <div class="preview-habit-dot" style="background:rgba(34,211,238,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(34,211,238,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(34,211,238,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12)"></div>
+            <div class="preview-habit-dot" style="background:rgba(34,211,238,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(34,211,238,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12)"></div>
+          </div>
+          <div class="preview-habit-row">
+            <div class="preview-habit-dot" style="background:rgba(251,191,36,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(251,191,36,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(251,191,36,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(251,191,36,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(251,191,36,0.8)"></div>
+            <div class="preview-habit-dot" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12)"></div>
+            <div class="preview-habit-dot" style="background:rgba(251,191,36,0.8)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-header">
+          <span class="card-title">Life OS Dashboard</span>
+          <span class="tag cyan">Personal</span>
+        </div>
+        <p class="card-desc">Goal progress, habit streak grid, energy & mood log, and a prioritized task list.</p>
+        <div class="card-footer">
+          <span class="card-meta">4 widgets · Chart.js</span>
+          <span class="btn-view">View →</span>
+        </div>
+      </div>
+    </a>
+
+  </main>
+
+  <footer class="site-footer">
+    Dashboard UI Explorer &mdash; mvalente6-dot &middot; 2026
+  </footer>
+
+</body>
+</html>

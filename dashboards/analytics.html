@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics Dashboard — UI Explorer</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <a href="../index.html" class="back-link">← Back to Gallery</a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-title">Analytics Dashboard</span>
+    <span class="tag topbar-tag">Data</span>
+  </header>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <h4>Overview</h4>
+      <a href="#kpis" class="sidebar-link active"><span class="icon">📊</span> KPIs</a>
+      <a href="#traffic" class="sidebar-link"><span class="icon">📈</span> Traffic</a>
+      <a href="#channels" class="sidebar-link"><span class="icon">📡</span> Channels</a>
+      <a href="#activity" class="sidebar-link"><span class="icon">🕒</span> Recent Activity</a>
+    </div>
+    <div class="sidebar-section">
+      <h4>Reports</h4>
+      <a href="#" class="sidebar-link"><span class="icon">📋</span> Weekly Report</a>
+      <a href="#" class="sidebar-link"><span class="icon">📅</span> Monthly Summary</a>
+    </div>
+    <div class="sidebar-section">
+      <h4>Settings</h4>
+      <a href="#" class="sidebar-link"><span class="icon">⚙️</span> Configure</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="dashboard-content">
+
+    <!-- Page Title -->
+    <div style="margin-bottom:1.75rem">
+      <h2>Analytics Overview</h2>
+      <p style="margin-top:4px">Last 12 months · Updated March 2026</p>
+    </div>
+
+    <!-- KPI Row -->
+    <section id="kpis" class="dashboard-grid grid-4" style="margin-bottom:1.25rem">
+      <div class="stat-card">
+        <div class="stat-label">Total Users</div>
+        <div class="stat-value">84,210</div>
+        <div class="stat-change up">▲ 12.4% vs last period</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Revenue</div>
+        <div class="stat-value">$142,880</div>
+        <div class="stat-change up">▲ 8.1% vs last period</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Conversion Rate</div>
+        <div class="stat-value">3.42%</div>
+        <div class="stat-change up">▲ 0.3pp vs last period</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Churn Rate</div>
+        <div class="stat-value">1.87%</div>
+        <div class="stat-change down">▼ 0.2pp vs last period</div>
+      </div>
+    </section>
+
+    <!-- Charts Row -->
+    <section id="traffic" class="dashboard-grid grid-2" style="margin-bottom:1.25rem">
+      <div class="chart-card col-span-2" style="grid-column:span 1">
+        <h3>Traffic Over Time</h3>
+        <div class="chart-wrap"><canvas id="trafficChart"></canvas></div>
+      </div>
+      <div id="channels" class="chart-card">
+        <h3>Top Channels</h3>
+        <div class="chart-wrap"><canvas id="channelsChart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- Activity Table -->
+    <section id="activity" class="table-card">
+      <h3>Recent Activity</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Event</th>
+            <th>Page</th>
+            <th>Location</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sarah Chen</td><td>Page View</td><td>/pricing</td><td>New York, US</td><td>2 min ago</td><td><span class="tag">Active</span></td></tr>
+          <tr><td>Marco Rossi</td><td>Sign Up</td><td>/register</td><td>Milan, IT</td><td>5 min ago</td><td><span class="tag green">Converted</span></td></tr>
+          <tr><td>Aisha Patel</td><td>Purchase</td><td>/checkout</td><td>London, UK</td><td>11 min ago</td><td><span class="tag green">Converted</span></td></tr>
+          <tr><td>James Wilson</td><td>Page View</td><td>/features</td><td>Toronto, CA</td><td>14 min ago</td><td><span class="tag">Active</span></td></tr>
+          <tr><td>Yuki Tanaka</td><td>Bounce</td><td>/landing</td><td>Tokyo, JP</td><td>18 min ago</td><td><span class="tag yellow">Bounced</span></td></tr>
+          <tr><td>Elena Volkov</td><td>Sign Up</td><td>/register</td><td>Berlin, DE</td><td>22 min ago</td><td><span class="tag green">Converted</span></td></tr>
+          <tr><td>David Kim</td><td>Page View</td><td>/blog</td><td>Seoul, KR</td><td>29 min ago</td><td><span class="tag">Active</span></td></tr>
+          <tr><td>Fatima Al-Hassan</td><td>Bounce</td><td>/home</td><td>Dubai, AE</td><td>35 min ago</td><td><span class="tag yellow">Bounced</span></td></tr>
+          <tr><td>Lucas Müller</td><td>Purchase</td><td>/checkout</td><td>Hamburg, DE</td><td>41 min ago</td><td><span class="tag green">Converted</span></td></tr>
+          <tr><td>Nina Johansson</td><td>Page View</td><td>/docs</td><td>Stockholm, SE</td><td>48 min ago</td><td><span class="tag">Active</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <script>
+    const chartDefaults = {
+      color: '#94a3b8',
+      plugins: { legend: { labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 } } } },
+      scales: {
+        x: { ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } }
+      }
+    };
+
+    // Traffic Line Chart
+    new Chart(document.getElementById('trafficChart'), {
+      type: 'line',
+      data: {
+        labels: ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'],
+        datasets: [
+          {
+            label: 'Sessions',
+            data: [5200, 6100, 5800, 7200, 8100, 7600, 8900, 9400, 8700, 10200, 11500, 12300],
+            borderColor: '#6366f1',
+            backgroundColor: 'rgba(99,102,241,0.08)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#6366f1',
+            pointRadius: 3
+          },
+          {
+            label: 'Unique Users',
+            data: [3800, 4500, 4200, 5400, 6200, 5800, 6700, 7100, 6500, 7900, 8800, 9600],
+            borderColor: '#22d3ee',
+            backgroundColor: 'rgba(34,211,238,0.05)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#22d3ee',
+            pointRadius: 3
+          }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 } } } },
+        scales: chartDefaults.scales
+      }
+    });
+
+    // Channels Bar Chart
+    new Chart(document.getElementById('channelsChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Organic', 'Direct', 'Referral', 'Social', 'Email', 'Paid'],
+        datasets: [{
+          label: 'Sessions',
+          data: [4200, 3100, 2400, 1900, 1500, 1100],
+          backgroundColor: [
+            'rgba(99,102,241,0.75)', 'rgba(34,211,238,0.65)',
+            'rgba(52,211,153,0.65)', 'rgba(251,191,36,0.65)',
+            'rgba(248,113,113,0.65)', 'rgba(167,139,250,0.65)'
+          ],
+          borderRadius: 6,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } }, grid: { display: false } },
+          y: { ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } }, grid: { color: 'rgba(255,255,255,0.05)' } }
+        }
+      }
+    });
+
+    // Sidebar scroll highlight
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

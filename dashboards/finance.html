@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finance Dashboard — UI Explorer</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .net-worth-card {
+      background: linear-gradient(135deg, rgba(52,211,153,0.12) 0%, rgba(99,102,241,0.08) 100%);
+      border: 1px solid rgba(52,211,153,0.25);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .net-worth-left .nw-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .net-worth-left .nw-value {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .net-worth-left .nw-change {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--green);
+    }
+    .net-worth-right {
+      display: flex;
+      gap: 2rem;
+    }
+    .nw-stat { text-align: right; }
+    .nw-stat .ns-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .nw-stat .ns-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .nw-stat .ns-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .allocation-legend {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .legend-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+    .legend-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-label { color: var(--muted); }
+    .legend-pct { color: var(--text); font-weight: 600; font-size: 0.82rem; }
+
+    .change-positive { color: var(--green); font-weight: 600; }
+    .change-negative { color: var(--red); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <a href="../index.html" class="back-link">← Back to Gallery</a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-title">Finance Dashboard</span>
+    <span class="tag green topbar-tag">Finance</span>
+  </header>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <h4>Portfolio</h4>
+      <a href="#networth" class="sidebar-link active"><span class="icon">💰</span> Net Worth</a>
+      <a href="#allocation" class="sidebar-link"><span class="icon">🥧</span> Allocation</a>
+      <a href="#cashflow" class="sidebar-link"><span class="icon">💵</span> Cash Flow</a>
+      <a href="#holdings" class="sidebar-link"><span class="icon">📋</span> Holdings</a>
+    </div>
+    <div class="sidebar-section">
+      <h4>Planning</h4>
+      <a href="#" class="sidebar-link"><span class="icon">🎯</span> Goals</a>
+      <a href="#" class="sidebar-link"><span class="icon">🗓️</span> Budget</a>
+    </div>
+    <div class="sidebar-section">
+      <h4>Settings</h4>
+      <a href="#" class="sidebar-link"><span class="icon">⚙️</span> Accounts</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="dashboard-content">
+
+    <div style="margin-bottom:1.75rem">
+      <h2>Portfolio Overview</h2>
+      <p style="margin-top:4px">As of March 21, 2026 · All values in USD</p>
+    </div>
+
+    <!-- Net Worth Banner -->
+    <section id="networth" style="margin-bottom:1.25rem">
+      <div class="net-worth-card">
+        <div class="net-worth-left">
+          <div class="nw-label">Total Net Worth</div>
+          <div class="nw-value">$284,420</div>
+          <div class="nw-change">▲ +$44,180 (18.4%) this year</div>
+        </div>
+        <div class="net-worth-right">
+          <div class="nw-stat">
+            <div class="ns-label">Investments</div>
+            <div class="ns-value">$198,300</div>
+            <div class="ns-sub text-green">+22.1% YTD</div>
+          </div>
+          <div class="nw-stat">
+            <div class="ns-label">Cash</div>
+            <div class="ns-value">$52,400</div>
+            <div class="ns-sub text-muted">Savings + checking</div>
+          </div>
+          <div class="nw-stat">
+            <div class="ns-label">Liabilities</div>
+            <div class="ns-value" style="color:var(--red)">-$33,720</div>
+            <div class="ns-sub text-muted">Mortgage + loans</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Row -->
+    <section id="allocation" class="dashboard-grid grid-2" style="margin-bottom:1.25rem">
+
+      <!-- Allocation Donut -->
+      <div class="chart-card">
+        <h3>Portfolio Allocation</h3>
+        <div style="display:flex;align-items:center;gap:1.5rem;margin-top:0.5rem">
+          <div style="width:160px;height:160px;flex-shrink:0">
+            <canvas id="allocationChart"></canvas>
+          </div>
+          <div class="allocation-legend" style="flex:1">
+            <div class="legend-row"><div class="legend-left"><div class="legend-dot" style="background:#6366f1"></div><span class="legend-label">US Equities</span></div><span class="legend-pct">42%</span></div>
+            <div class="legend-row"><div class="legend-left"><div class="legend-dot" style="background:#22d3ee"></div><span class="legend-label">Intl Equities</span></div><span class="legend-pct">18%</span></div>
+            <div class="legend-row"><div class="legend-left"><div class="legend-dot" style="background:#34d399"></div><span class="legend-label">Bonds</span></div><span class="legend-pct">20%</span></div>
+            <div class="legend-row"><div class="legend-left"><div class="legend-dot" style="background:#fbbf24"></div><span class="legend-label">Real Estate</span></div><span class="legend-pct">12%</span></div>
+            <div class="legend-row"><div class="legend-left"><div class="legend-dot" style="background:#f472b6"></div><span class="legend-label">Crypto</span></div><span class="legend-pct">8%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Income vs Expenses -->
+      <div id="cashflow" class="chart-card">
+        <h3>Income vs. Expenses</h3>
+        <div class="chart-wrap"><canvas id="cashflowChart"></canvas></div>
+      </div>
+
+    </section>
+
+    <!-- Holdings Table -->
+    <section id="holdings" class="table-card">
+      <h3>Holdings</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th>Type</th>
+            <th>Shares / Units</th>
+            <th>Avg Cost</th>
+            <th>Current Price</th>
+            <th>Market Value</th>
+            <th>Return</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>AAPL</td><td><span class="tag">Equity</span></td><td>45</td><td>$148.20</td><td>$211.50</td><td>$9,518</td><td class="change-positive">+42.7%</td></tr>
+          <tr><td>MSFT</td><td><span class="tag">Equity</span></td><td>28</td><td>$302.40</td><td>$415.80</td><td>$11,642</td><td class="change-positive">+37.5%</td></tr>
+          <tr><td>NVDA</td><td><span class="tag">Equity</span></td><td>12</td><td>$480.00</td><td>$875.20</td><td>$10,502</td><td class="change-positive">+82.3%</td></tr>
+          <tr><td>VTI</td><td><span class="tag cyan">ETF</span></td><td>110</td><td>$198.60</td><td>$245.30</td><td>$26,983</td><td class="change-positive">+23.5%</td></tr>
+          <tr><td>VXUS</td><td><span class="tag cyan">ETF</span></td><td>85</td><td>$52.40</td><td>$58.90</td><td>$5,007</td><td class="change-positive">+12.4%</td></tr>
+          <tr><td>BND</td><td><span class="tag green">Bond</span></td><td>200</td><td>$74.80</td><td>$72.10</td><td>$14,420</td><td class="change-negative">-3.6%</td></tr>
+          <tr><td>BTC</td><td><span class="tag yellow">Crypto</span></td><td>0.28</td><td>$42,000</td><td>$68,400</td><td>$19,152</td><td class="change-positive">+62.9%</td></tr>
+          <tr><td>ETH</td><td><span class="tag yellow">Crypto</span></td><td>2.5</td><td>$2,200</td><td>$3,840</td><td>$9,600</td><td class="change-positive">+74.5%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <script>
+    // Allocation Donut
+    new Chart(document.getElementById('allocationChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['US Equities','Intl Equities','Bonds','Real Estate','Crypto'],
+        datasets: [{
+          data: [42, 18, 20, 12, 8],
+          backgroundColor: ['#6366f1','#22d3ee','#34d399','#fbbf24','#f472b6'],
+          borderWidth: 2,
+          borderColor: '#0f1117',
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        cutout: '68%',
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Cash Flow Bar Chart
+    new Chart(document.getElementById('cashflowChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Oct','Nov','Dec','Jan','Feb','Mar'],
+        datasets: [
+          {
+            label: 'Income',
+            data: [9200, 9200, 11800, 9400, 9200, 9600],
+            backgroundColor: 'rgba(52,211,153,0.7)',
+            borderRadius: 5,
+            borderSkipped: false
+          },
+          {
+            label: 'Expenses',
+            data: [5800, 6200, 8400, 5600, 5900, 5700],
+            backgroundColor: 'rgba(248,113,113,0.6)',
+            borderRadius: 5,
+            borderSkipped: false
+          }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 } } } },
+        scales: {
+          x: { ticks: { color: '#64748b', font: { family: 'Inter' } }, grid: { display: false } },
+          y: {
+            ticks: {
+              color: '#64748b', font: { family: 'Inter' },
+              callback: v => '$' + (v/1000).toFixed(0) + 'K'
+            },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          }
+        }
+      }
+    });
+
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

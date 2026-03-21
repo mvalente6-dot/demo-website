@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life OS Dashboard — UI Explorer</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Goal tracker */
+    .goal-list { display: flex; flex-direction: column; gap: 1rem; }
+    .goal-item {}
+    .goal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .goal-name { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+    .goal-meta { font-size: 0.78rem; color: var(--muted); }
+    .goal-pct  { font-size: 0.85rem; font-weight: 700; color: var(--accent-h); }
+
+    /* Habit grid */
+    .habit-section {}
+    .day-headers {
+      display: grid;
+      grid-template-columns: 120px repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+    .day-header {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted2);
+    }
+    .habit-rows { display: flex; flex-direction: column; gap: 5px; }
+    .habit-row {
+      display: grid;
+      grid-template-columns: 120px repeat(7, 1fr);
+      gap: 5px;
+      align-items: center;
+    }
+    .habit-row-name {
+      font-size: 0.82rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .habit-cell {
+      aspect-ratio: 1;
+      border-radius: 5px;
+      cursor: default;
+      transition: transform 0.15s;
+    }
+    .habit-cell:hover { transform: scale(1.12); }
+    .habit-cell.done    { background: var(--accent); }
+    .habit-cell.partial { background: rgba(99,102,241,0.35); }
+    .habit-cell.missed  { background: rgba(255,255,255,0.06); border: 1px solid var(--border); }
+    .habit-cell.done-2  { background: var(--accent2); }
+    .habit-cell.done-3  { background: var(--yellow); }
+    .habit-cell.done-4  { background: var(--green); }
+
+    .habit-legend {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+    .habit-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .habit-legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 3px;
+    }
+
+    /* Mood chart */
+    .mood-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--muted2);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <a href="../index.html" class="back-link">← Back to Gallery</a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-title">Life OS Dashboard</span>
+    <span class="tag cyan topbar-tag">Personal</span>
+  </header>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <h4>Focus</h4>
+      <a href="#goals" class="sidebar-link active"><span class="icon">🎯</span> Goals</a>
+      <a href="#habits" class="sidebar-link"><span class="icon">🔥</span> Habits</a>
+      <a href="#mood" class="sidebar-link"><span class="icon">🧠</span> Energy & Mood</a>
+      <a href="#tasks" class="sidebar-link"><span class="icon">✅</span> Tasks</a>
+    </div>
+    <div class="sidebar-section">
+      <h4>Reflect</h4>
+      <a href="#" class="sidebar-link"><span class="icon">📓</span> Journal</a>
+      <a href="#" class="sidebar-link"><span class="icon">📆</span> Weekly Review</a>
+    </div>
+    <div class="sidebar-section">
+      <h4>Settings</h4>
+      <a href="#" class="sidebar-link"><span class="icon">⚙️</span> Preferences</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="dashboard-content">
+
+    <div style="margin-bottom:1.75rem">
+      <h2>Life OS</h2>
+      <p style="margin-top:4px">Week of March 17–23, 2026 · 12-day streak 🔥</p>
+    </div>
+
+    <!-- Top row: Goals + Habits -->
+    <section class="dashboard-grid grid-2" style="margin-bottom:1.25rem">
+
+      <!-- Goals -->
+      <div id="goals" class="chart-card">
+        <h3 style="margin-bottom:1.25rem">Active Goals</h3>
+        <div class="goal-list">
+
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">🏃 Run 100km this month</span>
+              <span class="goal-pct">68%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" style="width:68%"></div>
+            </div>
+            <div class="goal-meta" style="margin-top:4px">68 / 100 km · 9 days left</div>
+          </div>
+
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">📚 Read 2 books per month</span>
+              <span class="goal-pct">50%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" style="width:50%;background:linear-gradient(90deg,var(--accent2),var(--green))"></div>
+            </div>
+            <div class="goal-meta" style="margin-top:4px">1 / 2 books complete</div>
+          </div>
+
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">💸 Save $2,000 this month</span>
+              <span class="goal-pct">87%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" style="width:87%;background:linear-gradient(90deg,var(--green),var(--accent2))"></div>
+            </div>
+            <div class="goal-meta" style="margin-top:4px">$1,740 / $2,000 saved</div>
+          </div>
+
+          <div class="goal-item">
+            <div class="goal-header">
+              <span class="goal-name">🧘 Meditate 20 days</span>
+              <span class="goal-pct">35%</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" style="width:35%;background:linear-gradient(90deg,var(--yellow),var(--accent))"></div>
+            </div>
+            <div class="goal-meta" style="margin-top:4px">7 / 20 sessions done</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Habits -->
+      <div id="habits" class="chart-card">
+        <h3 style="margin-bottom:1.25rem">Habit Tracker — This Week</h3>
+        <div class="habit-section">
+          <div class="day-headers">
+            <div></div>
+            <div class="day-header">Mon</div>
+            <div class="day-header">Tue</div>
+            <div class="day-header">Wed</div>
+            <div class="day-header">Thu</div>
+            <div class="day-header">Fri</div>
+            <div class="day-header">Sat</div>
+            <div class="day-header">Sun</div>
+          </div>
+          <div class="habit-rows">
+            <div class="habit-row">
+              <span class="habit-row-name">🏃 Morning Run</span>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell missed"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell missed"></div>
+            </div>
+            <div class="habit-row">
+              <span class="habit-row-name">📚 Read 30 min</span>
+              <div class="habit-cell done-2"></div>
+              <div class="habit-cell done-2"></div>
+              <div class="habit-cell done-2"></div>
+              <div class="habit-cell missed"></div>
+              <div class="habit-cell done-2"></div>
+              <div class="habit-cell done-2"></div>
+              <div class="habit-cell missed"></div>
+            </div>
+            <div class="habit-row">
+              <span class="habit-row-name">🧘 Meditate</span>
+              <div class="habit-cell done-3"></div>
+              <div class="habit-cell done-3"></div>
+              <div class="habit-cell done-3"></div>
+              <div class="habit-cell done-3"></div>
+              <div class="habit-cell done-3"></div>
+              <div class="habit-cell missed"></div>
+              <div class="habit-cell done-3"></div>
+            </div>
+            <div class="habit-row">
+              <span class="habit-row-name">💧 2L Water</span>
+              <div class="habit-cell done-4"></div>
+              <div class="habit-cell done-4"></div>
+              <div class="habit-cell done-4"></div>
+              <div class="habit-cell done-4"></div>
+              <div class="habit-cell partial"></div>
+              <div class="habit-cell done-4"></div>
+              <div class="habit-cell done-4"></div>
+            </div>
+            <div class="habit-row">
+              <span class="habit-row-name">📝 Journal</span>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell missed"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell done"></div>
+              <div class="habit-cell missed"></div>
+            </div>
+          </div>
+          <div class="habit-legend">
+            <div class="habit-legend-item"><div class="habit-legend-dot" style="background:var(--accent)"></div>Done</div>
+            <div class="habit-legend-item"><div class="habit-legend-dot" style="background:rgba(99,102,241,0.35)"></div>Partial</div>
+            <div class="habit-legend-item"><div class="habit-legend-dot" style="background:rgba(255,255,255,0.06);border:1px solid var(--border)"></div>Missed</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Bottom row: Mood chart + Tasks -->
+    <section class="dashboard-grid grid-2">
+
+      <!-- Energy & Mood -->
+      <div id="mood" class="chart-card">
+        <h3>Energy & Mood Log — Last 14 Days</h3>
+        <div class="chart-wrap" style="height:200px;margin-top:1rem">
+          <canvas id="moodChart"></canvas>
+        </div>
+        <div class="mood-labels">
+          <span>Mar 8</span>
+          <span>Mar 21</span>
+        </div>
+      </div>
+
+      <!-- Tasks -->
+      <div id="tasks" class="chart-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem">
+          <h3>Today's Tasks</h3>
+          <span style="font-size:0.8rem;color:var(--muted)">6 / 8 done</span>
+        </div>
+        <div class="task-list">
+          <div class="task-item done"><input type="checkbox" checked /><span>Morning workout ✅</span><span class="task-priority high">High</span></div>
+          <div class="task-item done"><input type="checkbox" checked /><span>Review weekly budget</span><span class="task-priority high">High</span></div>
+          <div class="task-item done"><input type="checkbox" checked /><span>Read 30 min (chapter 4)</span><span class="task-priority med">Med</span></div>
+          <div class="task-item done"><input type="checkbox" checked /><span>Reply to emails</span><span class="task-priority med">Med</span></div>
+          <div class="task-item done"><input type="checkbox" checked /><span>Grocery run</span><span class="task-priority low">Low</span></div>
+          <div class="task-item done"><input type="checkbox" checked /><span>Journal entry</span><span class="task-priority low">Low</span></div>
+          <div class="task-item"><input type="checkbox" /><span>Finish side project draft</span><span class="task-priority high">High</span></div>
+          <div class="task-item"><input type="checkbox" /><span>Call dentist for appointment</span><span class="task-priority low">Low</span></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    // Energy & Mood Chart
+    new Chart(document.getElementById('moodChart'), {
+      type: 'line',
+      data: {
+        labels: ['8','9','10','11','12','13','14','15','16','17','18','19','20','21'],
+        datasets: [
+          {
+            label: 'Energy',
+            data: [6, 7, 5, 8, 7, 9, 6, 7, 8, 9, 7, 8, 9, 8],
+            borderColor: '#6366f1',
+            backgroundColor: 'rgba(99,102,241,0.08)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#6366f1',
+            pointRadius: 3
+          },
+          {
+            label: 'Mood',
+            data: [7, 6, 7, 8, 6, 8, 7, 8, 7, 9, 8, 9, 8, 9],
+            borderColor: '#22d3ee',
+            backgroundColor: 'rgba(34,211,238,0.05)',
+            fill: true,
+            tension: 0.4,
+            pointBackgroundColor: '#22d3ee',
+            pointRadius: 3
+          }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 } } } },
+        scales: {
+          x: { ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+          y: {
+            min: 1, max: 10,
+            ticks: { color: '#64748b', font: { family: 'Inter', size: 11 }, stepSize: 2 },
+            grid: { color: 'rgba(255,255,255,0.04)' }
+          }
+        }
+      }
+    });
+
+    // Task checkboxes
+    document.querySelectorAll('.task-item input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        cb.closest('.task-item').classList.toggle('done', cb.checked);
+      });
+    });
+
+    // Sidebar highlight
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
