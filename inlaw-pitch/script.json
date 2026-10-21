@@ -1,0 +1,166 @@
+{
+  "voice_direction": "Warm, unhurried, sincere. Third person throughout. Direction tags in square brackets follow the ElevenLabs eleven_v4 guide: placed before the words they color, held until the next tag. Tags are stripped from captions and word counts.",
+  "scenes": [
+    {
+      "id": 1,
+      "kind": "street",
+      "title": "Across the street",
+      "narration": "[warmly] [slowly] Across the street from Papa and Grandee, there is a piece of land. Steve and Dawn have offered it to Matteo and Amber as a gift. [softly] Picture Lucas, Owen, and Wyatt growing up right there... close enough to walk over any time.",
+      "beats": [
+        "Across the street from Papa and Grandee",
+        "Lucas, Owen, and Wyatt, growing up right here"
+      ],
+      "cues": [
+        0,
+        2
+      ],
+      "visual": "Flat illustration: a quiet two-lane street. Papa and Grandee's house on the left with a porch light on. An open, grassy lot on the right. Slow, subtle drift of clouds; the lot gently brightens as the second beat lands."
+    },
+    {
+      "id": 2,
+      "kind": "ask",
+      "title": "The ask",
+      "narration": "[sincerely] [slowly] So here is what Matteo and Amber are hoping to ask tonight. A thirty year family loan of about {w:loan_amount}, at a rate below market, to build their home on that land. [calmly] Three percent is only an example, so the numbers have something to stand on. The actual rate is yours to decide. This is not a gift. They would pay every month, for thirty years, until it is fully repaid. [warmly] Everything that follows is the why, and the how.",
+      "beats": [
+        "A 30 year family loan of about {loan_amount_k}",
+        "A rate below market. 3% is only the example.",
+        "Not a gift. Paid every month, until fully repaid."
+      ],
+      "cues": [
+        1,
+        3,
+        5
+      ],
+      "visual": "A single card in the center with the three lines replacing one another by crossfade. The street illustration sits faintly behind the card, so the ask lands while the land is still on screen."
+    },
+    {
+      "id": 3,
+      "kind": "home",
+      "title": "What this home would mean",
+      "narration": "[warmly] [slowly] This would be the home Matteo and Amber hope to build, the one they would raise their boys in. Room for Lucas, Owen, and Wyatt to run, play outside, and just be boys. [lightly] Which, with three of them, is a full time job. Possibly two. [warmly] And one special piece: a sports barn, attached to the house, with open space for a basketball hoop, a soccer goal, a climbing wall, and a jungle gym, plus room for a home gym for Matteo. A place for the boys, and the whole family, to play year round, rain or shine. [softly] Most of all, Papa and Grandee. They are already a big part of this family's life, and of the boys' lives, every single week. Matteo and Amber cherish that. [warmly] Across the street, it would be nearly every day. More of what the whole family already loves.",
+      "beats": [
+        "The home they hope to raise their boys in",
+        "Room to run, play outside, and just be boys",
+        "A sports barn: hoop, goal, climbing wall, jungle gym",
+        "Year round, rain or shine, for the whole family",
+        "Papa and Grandee: already every week, could be nearly every day"
+      ],
+      "cues": [
+        0,
+        1,
+        4,
+        5,
+        6
+      ],
+      "visual": "Beat 1: simple house outline appears on the lot. Beat 2: three small figures running on the grass, a ball in the air. Beat 3: the barn attached to the house, cutaway showing a hoop, a goal, a climbing wall, a jungle gym, and a small gym corner. Beat 4: soft rain over the barn roof, warm light inside. Beat 5: a family table with chairs for everyone, the two houses visible through a window."
+    },
+    {
+      "id": 4,
+      "kind": "thanks",
+      "title": "Thank you",
+      "narration": "[sincerely] [slowly] Whatever you decide about tonight, Matteo and Amber want to say thank you. For the land, and for everything you have done for this family over the years. [softly] They know this is a big ask. That is why they did not want to just ask and hope. [warmly] They came with a careful plan.",
+      "beats": [
+        "Thank you",
+        "This is a big ask. So here is a careful plan."
+      ],
+      "cues": [
+        0,
+        2
+      ],
+      "visual": "Beat 1: a single large 'Thank you' on the warm background, the accent color underline drawing in slowly. Beat 2: the words hold, then a thin folder or page icon appears beside them."
+    },
+    {
+      "id": 5,
+      "kind": "plan",
+      "title": "The plan",
+      "narration": "[warmly] [slowly] Here is the plan in one picture. The home would cost about {w:home_cost}. Selling their current home would cover about {w:from_home_sale} of that. The remaining {w:loan_amount} is what they are hoping to borrow from you... and pay back in full.",
+      "beats": [
+        "About {home_cost_k} to build",
+        "About {from_home_sale_k} from selling their current home",
+        "About {loan_amount_k} as a family loan"
+      ],
+      "cues": [
+        0,
+        2,
+        3
+      ],
+      "visual": "One horizontal bar: $600k total. It fills left to right in two segments as the narration lands: $200k (sale of current home) then $400k (family loan), each labeled underneath in large type."
+    },
+    {
+      "id": 6,
+      "kind": "numbers",
+      "title": "Why we need help",
+      "narration": "[calmly] [slowly] Today, Matteo and Amber pay about {w:today_payment} a month on their mortgage, at a rate near two and a half percent. Building means giving that rate up. At today's bank rate of {w:market_rate_pct}, the payment on a {w:loan_amount_adj} loan would be about {w:monthly_market} a month. [softly] Nearly triple what they pay now. That is the number that makes the build impossible. [warmly] At a family rate of around three percent, the payment would be about {w:monthly_family}. That is still about {w:change_family} a month more than they pay today. A real step up, but one they can carry. [calmly] Over thirty years, the difference in interest is about {w:interest_gap_rounded}. That is the gap a family rate closes.",
+      "beats": [
+        "Today: {monthly_today} a month",
+        "Bank rate ({market_rate_pct}): {monthly_market} a month",
+        "Family rate (about 3%): {monthly_family} a month",
+        "Interest over 30 years: {total_interest_market_rounded} vs {total_interest_family_rounded}",
+        "The gap a family rate closes: about {interest_gap_rounded}"
+      ],
+      "cues": [
+        0,
+        2,
+        5,
+        8,
+        9
+      ],
+      "visual": "Three big-number cards appear one at a time, left to right: Today / Bank rate / Family rate. Each shows the monthly figure at 110px+ and a small 'vs today' line (+$1,770, +$686). The family card is calm, not celebratory. Then the three cards slide back and one wide card shows total interest at each rate with the gap labeled 'the gap a family rate closes'. All figures from figures.json."
+    },
+    {
+      "id": 7,
+      "kind": "done",
+      "title": "Done properly",
+      "narration": "[calmly] [slowly] And it would be done properly, the way a bank would do it. A written loan agreement, drawn up by an attorney. [lightly] Yes, there will be paperwork. Matteo is looking forward to it. [calmly] Recorded against the home, just like a bank mortgage, so the loan is fully secured. Matteo and Amber would pay every cost of setting it up, and cover any extra tax that comes with a family rate. [sincerely] And to be clear, you could earn more elsewhere. This is help, not an investment, and they want to say that plainly. [warmly] They are not offering you a return. They are asking for help with the home they hope to build, across the street from you.",
+      "beats": [
+        "A written loan agreement",
+        "Recorded against the home, like a bank mortgage",
+        "They pay every cost, and cover any extra tax",
+        "Help, not an investment. Family across the street."
+      ],
+      "cues": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "visual": "A simple checklist that fills one line at a time, each with a soft check mark in the accent color. Icons: a signed page, a house with a small seal, a receipt. The fourth line is the plain statement of what this is for them."
+    },
+    {
+      "id": 8,
+      "kind": "irs",
+      "title": "How the IRS sees it",
+      "narration": "[calmly] [slowly] A word on how the IRS sees a family loan. Family loans are allowed, as long as they look like real loans: a written agreement, a real interest rate, and real monthly payments. Each month, the IRS publishes a minimum rate for family loans. Right now it is a little over five percent. If the family rate is below that minimum, the IRS treats the difference as if you had received it as interest, and then given it back as a gift. [softly] Two things follow. You may owe some income tax on interest you never actually received. Matteo and Amber would cover that, every year. Their estimate is about {w:extra_tax} in the first year, and less each year after. The gift part is far below the yearly gift allowance, so there is no gift tax. [warmly] And the interest you do receive is taxable, just like interest from a bank. They will confirm every detail with an attorney and a CPA.",
+      "beats": [
+        "Family loans are allowed, done like real loans",
+        "The IRS sets a minimum rate: {afr_pct} today",
+        "Tax on interest you never received: they cover it",
+        "The gift part is within the yearly allowance",
+        "Interest you do receive is taxable, like a bank's"
+      ],
+      "cues": [
+        0,
+        2,
+        6,
+        9,
+        10
+      ],
+      "visual": "A rate ladder: three horizontal bars, bank rate {market_rate_pct} on top, the IRS minimum {afr_pct} in the middle, the family rate 3% at the bottom. Beat 2 draws the IRS line. Beat 3 highlights the gap between the IRS minimum and the family rate with the label 'taxed as if received, they cover it, about {extra_tax} in year one'. Beat 4 adds 'counted as a gift, within the yearly allowance'. Beat 5 highlights the family bar: 'interest you receive is taxable, like a bank's'."
+    },
+    {
+      "id": 9,
+      "kind": "end",
+      "title": "Let's talk",
+      "narration": "[warmly] [slowly] That is the picture. A home across the street from Papa and Grandee, done carefully and fairly. [softly] No answer is needed tonight. [warmly] Matteo and Amber would love your questions. [lightly] And Lucas probably has a few of his own.",
+      "beats": [
+        "No answer needed tonight.",
+        "We'd love your questions."
+      ],
+      "cues": [
+        2,
+        3
+      ],
+      "visual": "Return to the scene 1 street, now with the house and barn on the lot and lights on in both homes. The two lines fade in over it. The card holds until the next key or click, which enters the deck."
+    }
+  ]
+}

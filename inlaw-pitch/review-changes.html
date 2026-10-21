@@ -1,0 +1,100 @@
+<title>Blind Review Changes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* One reading column; the pitch's own warm palette, committed single-theme to match the other pages. */
+:root { --bg:#FAF8F4; --fg:#1F2A30; --muted:#5B6166; --line:#E4DDD1; --card:#FFFDF9; --accent:#B86B28; --accent-soft:#F4E6D6; --ok:#2E7D4F; --ok-soft:#E3F1E8; --skip:#8A6D3B; --skip-soft:#F3EBD9;
+  --body:'Nunito Sans','Segoe UI',Helvetica,Arial,sans-serif; --display:'Literata',Georgia,serif; color-scheme:light; }
+body { background:var(--bg); color:var(--fg); font-family:var(--body); font-size:16px; line-height:1.5; padding-block:32px 64px; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); }
+main { max-width:1040px; margin:0 auto; }
+h1 { font-family:var(--display); font-weight:600; font-size:clamp(28px,4.5vw,40px); margin:0 0 6px; text-wrap:balance; }
+.lead { color:var(--muted); font-size:18px; margin:0 0 20px; max-width:70ch; }
+.eyebrow { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+.tally { display:flex; gap:12px; flex-wrap:wrap; margin:0 0 24px; }
+.tally div { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 16px; min-width:140px; }
+.tally .n { font-family:var(--display); font-size:30px; line-height:1; } .tally .k { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+.item { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-top:14px; min-width:0; }
+.item header { display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline; margin-bottom:10px; }
+.num { font-family:var(--display); color:var(--accent); font-size:22px; line-height:1; }
+.item h3 { font-size:18px; margin:0; font-weight:700; }
+.where { font-size:13px; color:var(--muted); }
+.pill { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:999px; margin-left:auto; }
+.pill.ok { background:var(--ok-soft); color:var(--ok); } .pill.skip { background:var(--skip-soft); color:var(--skip); }
+.why { color:var(--muted); font-size:15px; margin:0 0 10px; max-width:80ch; }
+.diff { display:grid; grid-template-columns:1fr 1fr; gap:12px; } @media (max-width:720px) { .diff { grid-template-columns:1fr; } }
+.diff > div { min-width:0; border-radius:8px; padding:10px 14px; font-size:15px; }
+.before { background:#F6F1EA; border-left:4px solid #C9BFB0; } .after { background:var(--accent-soft); border-left:4px solid var(--accent); }
+.diff .lbl { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px; }
+.diff p { margin:0; }
+h2 { font-family:var(--display); font-weight:600; font-size:24px; margin:40px 0 8px; padding-bottom:6px; border-bottom:2px solid var(--accent); }
+ul.plain { padding-left:20px; } ul.plain li { margin:6px 0; }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600&family=Nunito+Sans:wght@400;700&display=swap">
+<main>
+<p class="eyebrow">Across the Street, version 4</p>
+<h1>Changes from the blind review</h1>
+<p class="lead">A fresh reviewer with no project context read the brief, the script, the deck and the figures, and returned thirteen findings. Twelve were applied and one was skipped. Every "after" below is what the narration or slide now says.</p>
+<div class="tally"><div><div class="n">13</div><div class="k">Findings</div></div><div><div class="n">12</div><div class="k">Applied</div></div><div><div class="n">1</div><div class="k">Skipped</div></div><div><div class="n">7</div><div class="k">Clips regenerated</div></div></div>
+
+<article class="item"><header><span class="num">1</span><h3>The close framed the grandchildren as the return on the loan</h3><span class="where">Video, scene 7</span><span class="pill ok">Applied</span></header>
+<p class="why">"What you would get" is financial-win framing, and it implies family across the street depends on a yes. The one line that sounded like a pitch from the couch.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>This is help, not an investment. What you would get is family across the street.</p></div><div class="after"><div class="lbl">After</div><p>This is help, not an investment, and they want to say that plainly. They are not offering you a return. They are asking for help with the home they hope to build, across the street from you.</p></div></div></article>
+
+<article class="item"><header><span class="num">2</span><h3>"It is not money you lose" contradicts itself</h3><span class="where">Deck, slide 2, Amber's note</span><span class="pill ok">Applied</span></header>
+<p class="why">If they could earn more elsewhere, lending at 3% does cost them something. A careful parent would push back on it in the room.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>That gap is what a family rate closes for us. It is not money you lose, since you could earn more elsewhere either way. It is the difference between building and not building.</p></div><div class="after"><div class="lbl">After</div><p>That gap is what a bank would charge us and what a family rate spares us. It is not a number you would have earned, because you are not a bank. But we know you could earn more than three percent somewhere else, and we are asking anyway, because this is the difference between building and not building.</p></div></div></article>
+
+<article class="item"><header><span class="num">3</span><h3>Two lines presumed a yes</h3><span class="where">Deck, slide 6; video, scene 3 beat 5</span><span class="pill ok">Applied</span></header>
+<p class="why">The brief asks for wording that makes "not yet" easy to say. "Then we build" and "soon" both read as settled.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>Then we build in 2027.<br><br>Papa and Grandee: cherished every week, soon nearly every day</p></div><div class="after"><div class="lbl">After</div><p>If it all lines up, we hope to build in 2027.<br><br>Papa and Grandee: already every week, could be nearly every day</p></div></div></article>
+
+<article class="item"><header><span class="num">4</span><h3>"Before anything else" came after the ask</h3><span class="where">Video, thank-you scene</span><span class="pill ok">Applied</span></header>
+<p class="why">Once the ask moved to scene 2 the phrase was untrue, and a thank-you right after a request reads as thanks in advance unless it is decoupled from the answer.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>Before anything else: thank you. For the land, and for everything you have done for this family over the years.</p></div><div class="after"><div class="lbl">After</div><p>Whatever you decide about tonight, Matteo and Amber want to say thank you. For the land, and for everything you have done for this family over the years.</p></div></div></article>
+
+<article class="item"><header><span class="num">5</span><h3>"They came with a careful plan" was followed by the dream home, not the plan</h3><span class="where">Video, scene order</span><span class="pill ok">Applied</span></header>
+<p class="why">The thank-you set up the plan and the film detoured through the most emotional scene first. Swapping two scenes puts the heart of the pitch right after the ask and lets "careful plan" lead straight into the plan bar.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>land, ask, thank you, what the home would mean, plan, numbers, done properly, let's talk</p></div><div class="after"><div class="lbl">After</div><p>land, ask, what the home would mean, thank you, plan, numbers, done properly, how the IRS sees it, let's talk</p></div></div></article>
+
+<article class="item"><header><span class="num">6</span><h3>The family-rate increase was shown but never said</h3><span class="where">Video, numbers scene</span><span class="pill ok">Applied</span></header>
+<p class="why">The bank-rate jump got "nearly triple" out loud; the family-rate jump was only a small line on a card. Older viewers listening on a TV deserve the number.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>At a family rate of around three percent, the payment would be about one thousand six hundred eighty six dollars. Still a real step up, but one they can carry.</p></div><div class="after"><div class="lbl">After</div><p>At a family rate of around three percent, the payment would be about one thousand six hundred eighty six dollars. That is still about six hundred eighty six dollars a month more than they pay today. A real step up, but one they can carry.</p></div></div></article>
+
+<article class="item"><header><span class="num">7</span><h3>The paperwork joke landed on the tax sentence, and [chuckles] laughed before the punchline</h3><span class="where">Video, scenes 3, 7 and 9</span><span class="pill ok">Applied</span></header>
+<p class="why">Joking right after "you may owe tax on money you never receive" risked reading as flippant. And the [chuckles] tag makes the narrator laugh at his own joke before the audience hears it. All three humor lines now use a [lightly] delivery tag.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>...a small amount of tax might come up on your side. They would cover that, every year. [chuckles] Yes, there will be paperwork. Matteo is looking forward to it.</p></div><div class="after"><div class="lbl">After</div><p>A written loan agreement, drawn up by an attorney. [lightly] Yes, there will be paperwork. Matteo is looking forward to it. [calmly] Recorded against the home, just like a bank mortgage...</p></div></div></article>
+
+<article class="item"><header><span class="num">8</span><h3>"Attorney and CPA" appeared three times in the deck; the brief says once</h3><span class="where">Deck, appendix A2 and slide 6</span><span class="pill ok">Applied</span></header>
+<p class="why">Removed from the sources slide and from the next-steps slide. It now appears once in the deck, on the IRS slide, and once in the film, in the IRS scene.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>Tax estimate assumes a 30% rate. We will confirm every detail with an attorney and CPA.<br><br>If you want to go further, we bring in an attorney and a CPA to confirm every detail.</p></div><div class="after"><div class="lbl">After</div><p>Tax estimate assumes a 30% rate. Yearly gift allowance: IRS Rev. Proc. 2025-32, $19,000 per giver per recipient for 2026.<br><br>If you want to go further, we bring in the professionals and come back with the paperwork.</p></div></div></article>
+
+<article class="item"><header><span class="num">9</span><h3>A placeholder that might not resolve</h3><span class="where">Video, numbers scene</span><span class="pill skip">Skipped</span></header>
+<p class="why">The reviewer could not see the resolver and flagged {w:loan_amount_adj}. The builder maps it to "four hundred thousand dollar," which is what the audio says. Verified by comparing every scene's spoken text to the script before publishing. Nothing to change.</p></article>
+
+<article class="item"><header><span class="num">10</span><h3>A clinical phrasing in the most important scene</h3><span class="where">Video, scene 2</span><span class="pill ok">Applied</span></header>
+<p class="why">"The example used here" is passive and sounds like a footnote.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>Three percent is the example used here. The actual rate is yours to decide.</p></div><div class="after"><div class="lbl">After</div><p>Three percent is only an example, so the numbers have something to stand on. The actual rate is yours to decide.</p></div></div></article>
+
+<article class="item"><header><span class="num">11</span><h3>"This is the honest version" implied the film was not</h3><span class="where">Deck, slide 2, Matteo's note</span><span class="pill ok">Applied</span></header>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>This is the honest version. Even at a family rate, our payment goes up by about six hundred eighty six dollars a month.</p></div><div class="after"><div class="lbl">After</div><p>This is the same comparison with nothing rounded off. Even at a family rate, our payment goes up by about six hundred eighty six dollars a month.</p></div></div></article>
+
+<article class="item"><header><span class="num">12</span><h3>The closing thank-you belonged to Amber</h3><span class="where">Deck, slide 6 notes</span><span class="pill ok">Applied</span></header>
+<p class="why">Matteo was thanking Amber's parents for listening while Amber had already stepped back. Her note now opens and closes the slide, with Matteo's logistics in between.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>Matteo: ...we come back to you with the paperwork. Thank you for listening to all of this.</p></div><div class="after"><div class="lbl">After</div><p>Matteo: ...we come back to you with the paperwork.<br>Amber: ...We would rather hear it. Thank you for listening to all of this.</p></div></div></article>
+
+<article class="item"><header><span class="num">13</span><h3>A written-sounding flourish in the thank-you</h3><span class="where">Video, thank-you scene</span><span class="pill ok">Applied</span></header>
+<p class="why">Marked optional by the reviewer. Taken, since the scene was being re-recorded anyway and it should be the least polished-feeling moment in the film.</p>
+<div class="diff"><div class="before"><div class="lbl">Before</div><p>That is why they did not come with a wish. They came with a careful plan.</p></div><div class="after"><div class="lbl">After</div><p>That is why they did not want to just ask and hope. They came with a careful plan.</p></div></div></article>
+
+<h2>What the reviewer said to leave alone</h2>
+<ul class="plain">
+<li>Scene 1's opening image and "close enough to walk over any time."</li>
+<li>Scene 2's three cards: amount, "3% is only the example," "not a gift."</li>
+<li>The plan bar: one picture, three numbers.</li>
+<li>The numbers scene's shape, and "that is the number that makes the build impossible."</li>
+<li>The Papa and Grandee passage: already a big part of the family's life, every week, nearly every day across the street.</li>
+<li>"Possibly two" and the Lucas line. Both kept; only the delivery tag changed.</li>
+<li>The ending: both houses lit, "no answer needed tonight," the hold on the card.</li>
+<li>Slide 3's "we would rather you see it than wonder about it," slide 4's "we want this to feel like a real loan, because it is one," and appendix A1 in Amber's voice.</li>
+</ul>
+<p class="why" style="margin-top:20px">The reviewer also confirmed brief compliance on a read-through: no dashes, no "guarantee," none of the banned jargon, siblings only in the appendix, nothing about the home beyond the brief, every beat at or under 12 words, Grandee spelled consistently, and "nearly triple" accurate.</p>
+</main>

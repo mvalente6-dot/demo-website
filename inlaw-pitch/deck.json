@@ -1,0 +1,76 @@
+{
+  "main": [
+    {
+      "id": 1,
+      "title": "The ask, in one view",
+      "content": "A family loan of about {loan_amount_k}. 30 years. A rate below market ({family_rate_pct} is the example). Monthly payment at {family_rate_pct}: {monthly_family}.",
+      "notes": {
+        "Matteo": "Everything you just saw comes down to this one slide. About four hundred thousand, over thirty years, at a rate below what a bank would charge. Three percent is only the example we used for the math. The rate is yours to decide.",
+        "Amber": "We know it is a lot to take in. We are not looking for an answer tonight. We just wanted you to see the whole picture in one place."
+      }
+    },
+    {
+      "id": 2,
+      "title": "Bank rate vs family rate",
+      "content": "Side by side: monthly payment ({monthly_market} vs {monthly_family}), change vs today's {monthly_today} ({change_market} vs {change_family}), total interest over 30 years ({total_interest_market} vs {total_interest_family}). Gap: {interest_gap}.",
+      "notes": {
+        "Matteo": "This is the same comparison with nothing rounded off. Even at a family rate, our payment goes up by about {w:change_family} a month. We have budgeted for that and we can carry it. At the bank rate, it goes up by about {w:change_market}, and that is the number that stops the build.",
+        "Amber": "The big number on the right is the interest over thirty years. That gap is what a bank would charge us and what a family rate spares us. It is not a number you would have earned, because you are not a bank. But we know you could earn more than three percent somewhere else, and we are asking anyway, because this is the difference between building and not building."
+      }
+    },
+    {
+      "id": 3,
+      "title": "Try the numbers",
+      "content": "Interactive. Sliders: loan amount $300k to $450k (default {loan_amount_k}), rate 2.5% to market ({market_rate_pct}). Shows our monthly payment, change vs today, and the difference vs a bank loan at the same amount.",
+      "notes": {
+        "Matteo": "If you want to see what a different amount or rate looks like, we can move these right now. Nothing here is locked in.",
+        "Amber": "Feel free to ask us to try anything. We would rather you see it than wonder about it."
+      }
+    },
+    {
+      "id": 4,
+      "title": "Done properly",
+      "content": "A written loan agreement. Recorded against the home, like a bank mortgage, so the loan is fully secured. We pay every cost of setting it up. We cover any extra tax from the below-market rate, every year (estimate: about {extra_tax} in year one, shrinking over time).",
+      "notes": {
+        "Matteo": "We want this to feel like a real loan, because it is one. An attorney writes the agreement. It gets recorded against the house the same way a bank mortgage does. Payments go out automatically every month, so nobody ever has to chase anyone.",
+        "Amber": "Because the rate is below the IRS minimum for family loans, there may be a small amount of tax on your side each year, on interest you never actually receive. We cover that. Our estimate is around {w:extra_tax} in the first year, and it gets smaller every year after."
+      }
+    },
+    {
+      "id": 5,
+      "title": "How the IRS sees a family loan",
+      "content": "The IRS publishes a minimum rate for family loans each month: {afr_pct} for a loan this long, as of October 2026. At the 3% example, the difference on {loan_amount_k} is about {foregone_interest} a year. The IRS treats that difference two ways. As interest you received: taxable to you, an estimated {extra_tax} in year one at a 30% rate, shrinking as the balance falls. We cover it every year. As a gift from you to us: about {foregone_interest} a year, far below the yearly gift allowance of {gift_exclusion} per person per recipient ({gift_room} of room between the two of you and the two of us). No gift tax. The interest you actually receive at 3%, about {interest_received_y1} in year one, is taxable like interest from a bank. We will confirm every detail with an attorney and a CPA.",
+      "notes": {
+        "Matteo": "The IRS is fine with family loans as long as they look like real loans, which this will. The one wrinkle is the minimum rate. Because the example rate is below it, the IRS pretends you received the difference as interest and then gave it back to us as a gift. The interest part means a little tax on money you never got. Our estimate is about {w:extra_tax} the first year, and we cover it. The gift part is tiny next to the yearly allowance, so there is no gift tax at all.",
+        "Amber": "The short version: a little tax on interest you do not actually get, which we pay. No gift tax. And the interest you do get is taxable the same way interest from the bank would be. We will confirm all of it with an attorney and a CPA before anything is signed."
+      }
+    },
+    {
+      "id": 6,
+      "title": "What we're asking of you, and next steps",
+      "content": "Take the time you need. Ask us anything, tonight or later. If you want to go further, we bring in the professionals and come back with the paperwork. If it all lines up, we hope to build in 2027.",
+      "notes": {
+        "Amber": "Here is all we are asking tonight: think it over, and tell us what questions you have. If the answer is not yet, or not like this, that is okay. We would rather hear it. Thank you for listening to all of this.",
+        "Matteo": "If you want to go further, the next step is ours to arrange. We bring in the professionals, they confirm the details, and we come back to you with the paperwork."
+      }
+    }
+  ],
+  "appendix": [
+    {
+      "id": "A1",
+      "title": "Fair to Amber's siblings",
+      "content": "If the loan is not fully repaid by the time of inheritance, the unpaid balance comes out of Amber's share. The loan is a debt to the estate, not a gift, so no sibling is ever behind because of it.",
+      "notes": {
+        "Amber": "This one matters to me. If anything is still owed when the time comes, it comes out of my share, not anyone else's. The attorney can write that in."
+      }
+    },
+    {
+      "id": "A2",
+      "title": "Sources for the rates",
+      "content": "Bank rate: Freddie Mac Primary Mortgage Market Survey, 30-year fixed, {market_rate_pct} for the week of {market_date} (freddiemac.com/pmms). Residential construction loans were quoted around 7% to 9% in October 2026 (secondary sources); the 30-year rate is used for the comparison. IRS minimum family-loan rate: Rev. Rul. 2026-19, October 2026, long-term rate, semiannual compounding, {afr_pct} (irs.gov/pub/irs-drop/rr-26-19.pdf). Tax estimate assumes a 30% rate. Yearly gift allowance: IRS Rev. Proc. 2025-32, $19,000 per giver per recipient for 2026.",
+      "notes": {
+        "Matteo": "These are where the numbers come from. The bank rate is Freddie Mac's weekly survey, and we will refresh it the week we talk."
+      }
+    }
+  ]
+}
