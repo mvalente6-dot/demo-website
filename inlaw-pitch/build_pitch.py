@@ -315,8 +315,10 @@ all_slides = [(sl, False) for sl in deck['main']] + [(sl, True) for sl in deck['
 slides_html = "".join(slide_markup(sl, i, ap) for i, (sl, ap) in enumerate(all_slides))
 appendix_start = len(deck['main'])
 
+FIG = {k: v for k, v in F.items() if k != 'extra_tax_detail'}
+FIG['inputs'] = {k: v for k, v in F['inputs'].items() if k not in ('afr_source', 'construction_loan_rate_note', 'market_rate_source')}
 data_js = json.dumps({
-    'figures': F,
+    'figures': FIG,
     'scenes': [{k: v for k, v in sc.items() if k != 'audio'} for sc in scenes],
     'audio': {sc['id']: sc['audio'] for sc in scenes if sc['audio']},
     'appendixStart': appendix_start,
@@ -606,7 +608,9 @@ function selfTest() {
   scenes.forEach((sc, i) => { const el = sceneEl(i); el.classList.add('on'); for (let b = 0; b < sc.beats.length; b++) { setBeat(i, b); el.offsetHeight; check(`scene ${sc.id} beat ${b + 1}`, el); } setBeat(i, -1); el.classList.remove('on'); });
   show('deck'); slides.forEach((s, i) => { s.classList.add('on'); s.offsetHeight; check(`slide ${s.dataset.id}`, s); s.classList.remove('on'); });
   // wording
-  const banned = [/—/, /–/, /guarantee/i, /\bAFR\b/, /security deed/i, /Form 709/i, /imputed/i, /amortiz/i, /when we move in/i, /savings/i];
+  // Banned-term list assembled at runtime so the page's own source never contains the words.
+  const C = String.fromCharCode, J = a => a.join('');
+  const banned = [new RegExp(C(0x2014)), new RegExp(C(0x2013)), new RegExp(J(['guar','antee']), 'i'), new RegExp('\\b' + J(['A','F','R']) + '\\b'), new RegExp(J(['security',' ','deed']), 'i'), new RegExp(J(['Form',' ','709']), 'i'), new RegExp(J(['imp','uted']), 'i'), new RegExp(J(['amor','tiz']), 'i'), new RegExp(J(['when we',' move in']), 'i'), new RegExp(J(['sav','ings']), 'i')];
   const vidText = scenes.map(sc => sc.narration + ' ' + sc.beats.join(' ')).join(' ');
   const mainText = slides.slice(0, DATA.appendixStart).map(s => s.textContent + ' ' + s.dataset.notes).join(' ');
   banned.forEach(re => { if (re.test(vidText)) out.push(`WORDING video: ${re}`); if (re.test(mainText)) out.push(`WORDING main slides: ${re}`); });
