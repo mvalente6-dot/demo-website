@@ -411,17 +411,29 @@ body.captions .beat { bottom:150px; }
 .item .txt { font-size:58px; font-weight:700; line-height:1.12; }
 .item .tick { font-size:76px; color:var(--accent); font-weight:700; opacity:0; transition:opacity .6s ease .6s; }
 .item.on .tick { opacity:1; }
+.alt { margin-top:28px !important; }
+.linkbtn { font:inherit; font-size:28px; color:var(--muted); background:none; border:0; text-decoration:underline; cursor:pointer; padding:8px 12px; }
+.linkbtn:focus-visible { outline:4px solid var(--fg); outline-offset:4px; border-radius:6px; }
+.corner { position:absolute; top:30px; right:40px; font:inherit; font-size:26px; font-weight:700; color:var(--muted); background:rgba(255,253,249,.92); border:3px solid var(--line); border-radius:999px; padding:10px 26px; cursor:pointer; opacity:0; transition:opacity .4s; }
+#video:hover .corner, body.paused .corner, body.touch .corner { opacity:1; }
+.corner:focus-visible { opacity:1; outline:4px solid var(--fg); outline-offset:4px; }
+#deckbar { position:absolute; left:0; right:0; bottom:0; display:flex; gap:12px; padding:10px 40px 14px; opacity:0; transition:opacity .4s; }
+#deck:hover #deckbar, body.touch #deckbar { opacity:1; }
+#deckbar button { font:inherit; font-size:26px; font-weight:700; color:var(--muted); background:rgba(255,253,249,.92); border:3px solid var(--line); border-radius:999px; padding:10px 24px; cursor:pointer; }
+#deckbar button:focus-visible { outline:4px solid var(--fg); outline-offset:4px; }
+#deckbar .sp { flex:1; }
+.tch { display:none; } body.touch .tch { display:inline; } body.touch .kb { display:none; }
 /* controls overlay */
 #controls { position:absolute; left:0; right:0; bottom:0; padding:14px 40px; display:flex; justify-content:space-between; font-size:26px; color:var(--muted); opacity:0; transition:opacity .4s; pointer-events:none; }
 #video:hover #controls, body.paused #controls { opacity:1; }
 #pausebadge { position:absolute; top:40px; right:40px; font-size:34px; font-weight:700; color:var(--accent); background:var(--card); border:3px solid var(--accent); border-radius:999px; padding:10px 28px; display:none; }
 body.paused #pausebadge { display:block; }
 /* deck */
-.slide { position:absolute; inset:0; opacity:0; transition:opacity .7s ease; padding:90px 140px 80px; box-sizing:border-box; display:flex; flex-direction:column; }
+.slide { position:absolute; inset:0; opacity:0; transition:opacity .7s ease; padding:90px 140px 100px; box-sizing:border-box; display:flex; flex-direction:column; }
 .slide.on { opacity:1; }
 .slidebody { flex:1; min-height:0; }
 .slide h2 { font-size:84px; margin:0 0 40px; letter-spacing:-.01em; }
-.slidefoot { display:flex; justify-content:space-between; font-size:26px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; }
+.slidefoot { display:flex; justify-content:space-between; font-size:26px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; padding:0 0 10px; }
 .big4 { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
 .big4 > div { background:var(--card); border:4px solid var(--line); border-radius:24px; padding:36px 30px; min-width:0; }
 .big4 .k { font-size:30px; color:var(--muted); font-weight:700; }
@@ -590,8 +602,17 @@ function onKey(e) {
 }
 addEventListener('keydown', onKey);
 $('#begin').addEventListener('click', beginVideo);
+$('#skipDeck').addEventListener('click', e => { e.stopPropagation(); enterDeck(); });
+$('#toDeck').addEventListener('click', e => { e.stopPropagation(); enterDeck(); });
+$('#deckbar').addEventListener('click', e => {
+  const act = e.target.dataset.act; if (!act) return; e.stopPropagation();
+  if (act === 'prev') gotoSlide(cur - 1); else if (act === 'next') gotoSlide(cur + 1); else if (act === 'notes') openNotes();
+  else if (act === 'appendix') gotoSlide(DATA.appendixStart); else if (act === 'video') { show('video'); startScene(0); }
+});
+if (matchMedia('(hover: none)').matches || navigator.maxTouchPoints > 0) body.classList.add('touch');
+if (location.hash === '#deck') { show('deck'); gotoSlide(0); }
 $('#video').addEventListener('click', e => { if (si === scenes.length - 1 && now(si) >= duration(si)) enterDeck(); else togglePause(); });
-$('#deck').addEventListener('click', e => { if (['input', 'label', 'output'].includes((e.target.tagName || '').toLowerCase())) return; gotoSlide(cur + 1); });
+$('#deck').addEventListener('click', e => { if (e.target.closest('#deckbar')) return; if (['input', 'label', 'output'].includes((e.target.tagName || '').toLowerCase())) return; const r = stage.getBoundingClientRect(); gotoSlide((e.clientX - r.left) / r.width < 0.25 ? cur - 1 : cur + 1); });
 
 // ---------- self test (layout + wording), results in the D panel and window.__selftest ----------
 function selfTest() {
@@ -642,17 +663,27 @@ BODY = f'''<title>Across the Street</title>
   <section id="start" class="screen on" aria-label="Start">
     <div><p style="font-size:34px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 26px">For Papa and Grandee</p>
     <h1>Across the Street</h1><p>A short film, then a conversation.</p>
-    <button id="begin" type="button">Begin</button></div>
-    <div class="hint">Space pauses. Arrow keys replay or skip a scene. C shows captions.</div>
+    <button id="begin" type="button">Begin</button>
+    <p class="alt"><button id="skipDeck" type="button" class="linkbtn">Skip the film and open the discussion deck</button></p></div>
+    <div class="hint"><span class="kb">Space pauses. Arrow keys replay or skip a scene. C shows captions.</span><span class="tch">Turn the phone sideways. Tap to pause. The deck button is top right.</span></div>
   </section>
   <section id="video" class="screen" aria-label="Video">
     {scenes_html}
     <div id="pausebadge">Paused</div>
-    <div id="controls"><span id="sceneNo"></span><span>Space: pause. Left: replay. Right: next.</span></div>
+    <button id="toDeck" type="button" class="corner" title="Open the discussion deck">Discussion deck &#8250;</button>
+    <div id="controls"><span id="sceneNo"></span><span class="kb">Space: pause. Left: replay. Right: next.</span><span class="tch">Tap: pause</span></div>
     <div class="hint" id="hintEnd" style="opacity:0;transition:opacity 1s;bottom:auto;top:352px">Press any key or click to continue to the discussion.</div>
   </section>
   <section id="deck" class="screen" aria-label="Discussion deck">
     {slides_html}
+    <div id="deckbar">
+      <button type="button" data-act="prev" title="Previous slide">&#8249; Back</button>
+      <button type="button" data-act="next" title="Next slide">Next &#8250;</button>
+      <span class="sp"></span>
+      <button type="button" data-act="notes" title="Presenter notes (N)">Notes</button>
+      <button type="button" data-act="appendix" title="Appendix (A)">Appendix</button>
+      <button type="button" data-act="video" title="Back to the film (V)">Film</button>
+    </div>
   </section>
 </div></div>
 <aside id="notes" aria-label="Presenter notes"></aside>
@@ -664,7 +695,7 @@ full = f'''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 {BODY.replace('<title>Across the Street</title>', '<title>Across the Street</title>', 1)}
 </head>
@@ -676,7 +707,7 @@ full = f'''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 {head_part}</style>
 </head>
