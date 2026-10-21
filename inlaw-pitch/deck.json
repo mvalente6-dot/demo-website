@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "The ask, in one view",
-      "content": "A family loan of about $400,000. 30 years. A rate below market (3% is the example). Monthly payment at 3%: $1,686. Figures from figures.json.",
+      "content": "A family loan of about {loan_amount_k}. 30 years. A rate below market ({family_rate_pct} is the example). Monthly payment at {family_rate_pct}: {monthly_family}.",
       "notes": {
         "Matteo": "Everything you just saw comes down to this one slide. About four hundred thousand, over thirty years, at a rate below what a bank would charge. Three percent is only the example we used for the math. The rate is yours to decide.",
         "Amber": "We know it is a lot to take in. We are not looking for an answer tonight. We just wanted you to see the whole picture in one place."
@@ -12,16 +12,16 @@
     {
       "id": 2,
       "title": "Bank rate vs family rate",
-      "content": "Side by side: monthly payment ($2,770 vs $1,686), change vs today's $1,000 (+$1,770 vs +$686), total interest over 30 years ($597,027 vs $207,110). Gap: $389,917.",
+      "content": "Side by side: monthly payment ({monthly_market} vs {monthly_family}), change vs today's {monthly_today} ({change_market} vs {change_family}), total interest over 30 years ({total_interest_market} vs {total_interest_family}). Gap: {interest_gap}.",
       "notes": {
-        "Matteo": "This is the honest version. Even at a family rate, our payment goes up by almost seven hundred dollars a month. We have budgeted for that and we can carry it. At the bank rate, it goes up by seventeen hundred, and that is the number that stops the build.",
+        "Matteo": "This is the honest version. Even at a family rate, our payment goes up by about {w:change_family} a month. We have budgeted for that and we can carry it. At the bank rate, it goes up by about {w:change_market}, and that is the number that stops the build.",
         "Amber": "The big number on the right is the interest over thirty years. That gap is what a family rate closes for us. It is not money you lose, since you could earn more elsewhere either way. It is the difference between building and not building."
       }
     },
     {
       "id": 3,
       "title": "Try the numbers",
-      "content": "Interactive. Sliders: loan amount $300k to $450k (default $400k), rate 2.5% to market (7.40%). Shows our monthly payment, change vs today, and the difference vs a bank loan at the same amount. Recomputed live from the same formula as figures.json.",
+      "content": "Interactive. Sliders: loan amount $300k to $450k (default {loan_amount_k}), rate 2.5% to market ({market_rate_pct}). Shows our monthly payment, change vs today, and the difference vs a bank loan at the same amount.",
       "notes": {
         "Matteo": "If you want to see what a different amount or rate looks like, we can move these right now. Nothing here is locked in.",
         "Amber": "Feel free to ask us to try anything. We would rather you see it than wonder about it."
@@ -30,10 +30,10 @@
     {
       "id": 4,
       "title": "Done properly",
-      "content": "A written loan agreement. Recorded against the home, like a bank mortgage, so the loan is fully secured. Payments through an independent loan servicer, so there are always clear records. We pay every cost of setting it up. We cover any extra tax from the below-market rate, every year (estimate: about $2,600 in year one, shrinking over time).",
+      "content": "A written loan agreement. Recorded against the home, like a bank mortgage, so the loan is fully secured. Payments through an independent loan servicer, so there are always clear records. We pay every cost of setting it up. We cover any extra tax from the below-market rate, every year (estimate: about {extra_tax} in year one, shrinking over time).",
       "notes": {
         "Matteo": "We want this to feel like a real loan, because it is one. An attorney writes the agreement. It gets recorded against the house the same way a bank mortgage does. A servicer collects the payment every month and keeps the records, so nobody ever has to chase anyone.",
-        "Amber": "Because the rate is below the IRS minimum for family loans, there may be a small amount of tax on your side each year, on interest you never actually receive. We cover that. Our estimate is around twenty six hundred dollars in the first year, and it gets smaller every year after."
+        "Amber": "Because the rate is below the IRS minimum for family loans, there may be a small amount of tax on your side each year, on interest you never actually receive. We cover that. Our estimate is around {w:extra_tax} in the first year, and it gets smaller every year after."
       }
     },
     {
@@ -58,7 +58,7 @@
     {
       "id": "A2",
       "title": "Sources for the rates",
-      "content": "Bank rate: Freddie Mac Primary Mortgage Market Survey, 30-year fixed, 7.40% for the week of October 15, 2026 (freddiemac.com/pmms). Residential construction loans were quoted around 7% to 9% in October 2026 (secondary sources); the 30-year rate is used for the comparison. IRS minimum family-loan rate: Rev. Rul. 2026-19, October 2026, long-term rate, semiannual compounding, 5.15% (irs.gov/pub/irs-drop/rr-26-19.pdf). Tax estimate assumes a 30% rate. We will confirm every detail with an attorney and CPA.",
+      "content": "Bank rate: Freddie Mac Primary Mortgage Market Survey, 30-year fixed, {market_rate_pct} for the week of {market_date} (freddiemac.com/pmms). Residential construction loans were quoted around 7% to 9% in October 2026 (secondary sources); the 30-year rate is used for the comparison. IRS minimum family-loan rate: Rev. Rul. 2026-19, October 2026, long-term rate, semiannual compounding, {afr_pct} (irs.gov/pub/irs-drop/rr-26-19.pdf). Tax estimate assumes a 30% rate. We will confirm every detail with an attorney and CPA.",
       "notes": {
         "Matteo": "These are where the numbers come from. The bank rate is Freddie Mac's weekly survey, and we will refresh it the week we talk."
       }

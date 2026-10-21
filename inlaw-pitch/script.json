@@ -9,7 +9,11 @@
         "Across the street from Papa and Grandee",
         "Lucas, Owen, and Wyatt, growing up right here"
       ],
-      "visual": "Flat illustration: a quiet two-lane street. Papa and Grandee's house on the left with a porch light on. An open, grassy lot on the right. Slow, subtle drift of clouds; the lot gently brightens as the second beat lands."
+      "visual": "Flat illustration: a quiet two-lane street. Papa and Grandee's house on the left with a porch light on. An open, grassy lot on the right. Slow, subtle drift of clouds; the lot gently brightens as the second beat lands.",
+      "cues": [
+        0,
+        2
+      ]
     },
     {
       "id": 2,
@@ -22,7 +26,14 @@
         "Year round, rain or shine, for the whole family",
         "Papa and Grandee, part of everyday life"
       ],
-      "visual": "Beat 1: simple house outline appears on the lot. Beat 2: three small figures (not realistic) running on the grass, a ball in the air. Beat 3: the barn attached to the house, cutaway showing a hoop, a goal, a climbing wall, and a jungle gym; a small gym corner. Beat 4: soft rain over the barn roof, warm light inside. Beat 5: a family table with chairs for everyone, the two houses visible through a window."
+      "visual": "Beat 1: simple house outline appears on the lot. Beat 2: three small figures (not realistic) running on the grass, a ball in the air. Beat 3: the barn attached to the house, cutaway showing a hoop, a goal, a climbing wall, and a jungle gym; a small gym corner. Beat 4: soft rain over the barn roof, warm light inside. Beat 5: a family table with chairs for everyone, the two houses visible through a window.",
+      "cues": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": 3,
@@ -32,43 +43,65 @@
         "Thank you",
         "This is a big ask. So here is a careful plan."
       ],
-      "visual": "Beat 1: a single large 'Thank you' on the warm background, the accent color underline drawing in slowly. Beat 2: the words hold, then a thin folder or page icon appears beside them."
+      "visual": "Beat 1: a single large 'Thank you' on the warm background, the accent color underline drawing in slowly. Beat 2: the words hold, then a thin folder or page icon appears beside them.",
+      "cues": [
+        0,
+        2
+      ]
     },
     {
       "id": 4,
       "title": "The plan",
-      "narration": "Here is the plan in one picture. The home would cost about six hundred thousand dollars. Selling their current home would cover about two hundred thousand of that. The remaining four hundred thousand is what they are hoping to borrow from you, and pay back in full.",
+      "narration": "Here is the plan in one picture. The home would cost about {w:home_cost}. Selling their current home would cover about {w:from_home_sale} of that. The remaining {w:loan_amount} is what they are hoping to borrow from you, and pay back in full.",
       "beats": [
-        "About $600k to build",
-        "About $200k from selling their current home",
-        "About $400k as a family loan"
+        "About {home_cost_k} to build",
+        "About {from_home_sale_k} from selling their current home",
+        "About {loan_amount_k} as a family loan"
       ],
-      "visual": "One horizontal bar: $600k total. It fills left to right in two segments as the narration lands: $200k (sale of current home) then $400k (family loan), each labeled underneath in large type."
+      "visual": "One horizontal bar: $600k total. It fills left to right in two segments as the narration lands: $200k (sale of current home) then $400k (family loan), each labeled underneath in large type.",
+      "cues": [
+        0,
+        2,
+        3
+      ]
     },
     {
       "id": 5,
       "title": "Why we need help",
-      "narration": "Today, Matteo and Amber pay about one thousand dollars a month on their mortgage, at a rate near two and a half percent. Building means giving that rate up. At today's bank rate of seven point four percent, the payment on a four hundred thousand dollar loan would be about two thousand seven hundred seventy dollars a month. Nearly triple what they pay now. That is the number that makes the build impossible. At a family rate of around three percent, the payment would be about one thousand six hundred eighty six dollars. Still a real step up, but one they can carry. Over thirty years, the difference in interest is about three hundred ninety thousand dollars. That is the gap a family rate closes.",
+      "narration": "Today, Matteo and Amber pay about {w:today_payment} a month on their mortgage, at a rate near two and a half percent. Building means giving that rate up. At today's bank rate of {w:market_rate_pct}, the payment on a {w:loan_amount_adj} loan would be about {w:monthly_market} a month. Nearly triple what they pay now. That is the number that makes the build impossible. At a family rate of around three percent, the payment would be about {w:monthly_family}. Still a real step up, but one they can carry. Over thirty years, the difference in interest is about {w:interest_gap_rounded}. That is the gap a family rate closes.",
       "beats": [
-        "Today: $1,000 a month",
-        "Bank rate (7.40%): $2,770 a month",
-        "Family rate (about 3%): $1,686 a month",
-        "Interest over 30 years: $597,000 vs $207,000",
-        "The gap a family rate closes: about $390,000"
+        "Today: {monthly_today} a month",
+        "Bank rate ({market_rate_pct}): {monthly_market} a month",
+        "Family rate (about 3%): {monthly_family} a month",
+        "Interest over 30 years: {total_interest_market_rounded} vs {total_interest_family_rounded}",
+        "The gap a family rate closes: about {interest_gap_rounded}"
       ],
-      "visual": "Three big-number cards appear one at a time, left to right: Today / Bank rate / Family rate. Each shows the monthly figure at 110px+ and a small 'vs today' line (+$1,770, +$686). The family card is calm, not celebratory. Then the three cards slide back and one wide card shows total interest at each rate with the gap labeled 'the gap a family rate closes'. All figures from figures.json."
+      "visual": "Three big-number cards appear one at a time, left to right: Today / Bank rate / Family rate. Each shows the monthly figure at 110px+ and a small 'vs today' line (+$1,770, +$686). The family card is calm, not celebratory. Then the three cards slide back and one wide card shows total interest at each rate with the gap labeled 'the gap a family rate closes'. All figures from figures.json.",
+      "cues": [
+        0,
+        2,
+        5,
+        7,
+        8
+      ]
     },
     {
       "id": 6,
       "title": "What we're asking",
-      "narration": "So here is the ask. A thirty year family loan of about four hundred thousand dollars, at a rate below market. Three percent is the example used here. The actual rate is yours to decide. This is not a gift. Matteo and Amber would pay every month, for thirty years, until it is fully repaid. And to be clear, you could earn more elsewhere. This is help, not an investment. What you would get is family across the street.",
+      "narration": "So here is the ask. A thirty year family loan of about {w:loan_amount}, at a rate below market. Three percent is the example used here. The actual rate is yours to decide. This is not a gift. Matteo and Amber would pay every month, for thirty years, until it is fully repaid. And to be clear, you could earn more elsewhere. This is help, not an investment. What you would get is family across the street.",
       "beats": [
-        "A 30 year family loan of about $400k",
+        "A 30 year family loan of about {loan_amount_k}",
         "A rate below market. 3% is only the example.",
         "Not a gift. Paid every month, until fully repaid.",
         "Help, not an investment. Family across the street."
       ],
-      "visual": "A single card in the center with the four lines replacing one another by crossfade. The street illustration from scene 1 sits faintly behind the card."
+      "visual": "A single card in the center with the four lines replacing one another by crossfade. The street illustration from scene 1 sits faintly behind the card.",
+      "cues": [
+        0,
+        2,
+        4,
+        6
+      ]
     },
     {
       "id": 7,
@@ -80,7 +113,13 @@
         "Payments through an independent servicer. Clear records.",
         "They pay every cost, and cover any extra tax"
       ],
-      "visual": "A simple checklist that fills one line at a time, each with a soft check mark in the accent color. Icons: a signed page, a house with a small seal, a ledger, a receipt."
+      "visual": "A simple checklist that fills one line at a time, each with a soft check mark in the accent color. Icons: a signed page, a house with a small seal, a ledger, a receipt.",
+      "cues": [
+        0,
+        2,
+        3,
+        4
+      ]
     },
     {
       "id": 8,
@@ -90,7 +129,11 @@
         "No answer needed tonight.",
         "We'd love your questions."
       ],
-      "visual": "Return to the scene 1 street, now with the house and barn on the lot and lights on in both homes. The two lines fade in over it. The card holds until the next key or click, which enters the deck."
+      "visual": "Return to the scene 1 street, now with the house and barn on the lot and lights on in both homes. The two lines fade in over it. The card holds until the next key or click, which enters the deck.",
+      "cues": [
+        2,
+        3
+      ]
     }
   ]
 }

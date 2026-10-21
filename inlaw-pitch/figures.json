@@ -45,6 +45,11 @@
     "extra_tax": "$2,600",
     "total_interest_market_rounded": "$597,000",
     "total_interest_family_rounded": "$207,000",
-    "interest_gap_rounded": "$390,000"
+    "interest_gap_rounded": "$390,000",
+    "home_cost_k": "$600k",
+    "from_home_sale_k": "$200k",
+    "loan_amount_k": "$400k",
+    "market_date": "October 15, 2026",
+    "afr_pct": "5.15%"
   }
 }
