@@ -1,10 +1,10 @@
 {
-  "voice_direction": "Warm, unhurried, sincere. Third person throughout. Never speaks as Matteo or Amber.",
+  "voice_direction": "Warm, unhurried, sincere. Third person throughout. Direction tags in square brackets follow the ElevenLabs eleven_v4 guide: placed before the words they color, held until the next tag. Tags are stripped from captions and word counts.",
   "scenes": [
     {
       "id": 1,
       "title": "Across the street",
-      "narration": "Across the street from Papa and Grandee, there is a piece of land. Steve and Dawn have offered it to Matteo and Amber as a gift. Picture Lucas, Owen, and Wyatt growing up right there, close enough to walk over any time.",
+      "narration": "[warmly] [slowly] Across the street from Papa and Grandee, there is a piece of land. Steve and Dawn have offered it to Matteo and Amber as a gift. [softly] Picture Lucas, Owen, and Wyatt growing up right there... close enough to walk over any time.",
       "beats": [
         "Across the street from Papa and Grandee",
         "Lucas, Owen, and Wyatt, growing up right here"
@@ -18,27 +18,27 @@
     {
       "id": 2,
       "title": "What this home would mean",
-      "narration": "This would be the home Matteo and Amber hope to build, the one they would raise their boys in. Room for Lucas, Owen, and Wyatt to run, play outside, and just be boys. And one special piece: a sports barn, attached to the house, with open space for a basketball hoop, a soccer goal, a climbing wall, and a jungle gym, plus room for a home gym for Matteo. A place for the boys, and the whole family, to play year round, rain or shine. Most of all, Papa and Grandee would be part of everyday life, not just holidays.",
+      "narration": "[warmly] [slowly] This would be the home Matteo and Amber hope to build, the one they would raise their boys in. Room for Lucas, Owen, and Wyatt to run, play outside, and just be boys. [chuckles] Which, with three of them, is a full time job. [warmly] And one special piece: a sports barn, attached to the house, with open space for a basketball hoop, a soccer goal, a climbing wall, and a jungle gym. Plus room for a home gym for Matteo... [chuckles] which he insists he will use. [warmly] A place for the boys, and the whole family, to play year round, rain or shine. [softly] Most of all, Papa and Grandee. Today they are part of the boys' lives every week. Across the street, it would be nearly every day.",
       "beats": [
         "The home they hope to raise their boys in",
         "Room to run, play outside, and just be boys",
         "A sports barn: hoop, goal, climbing wall, jungle gym",
         "Year round, rain or shine, for the whole family",
-        "Papa and Grandee, part of everyday life"
+        "Papa and Grandee: from every week to nearly every day"
       ],
       "visual": "Beat 1: simple house outline appears on the lot. Beat 2: three small figures (not realistic) running on the grass, a ball in the air. Beat 3: the barn attached to the house, cutaway showing a hoop, a goal, a climbing wall, and a jungle gym; a small gym corner. Beat 4: soft rain over the barn roof, warm light inside. Beat 5: a family table with chairs for everyone, the two houses visible through a window.",
       "cues": [
         0,
         1,
-        2,
         3,
-        4
+        6,
+        7
       ]
     },
     {
       "id": 3,
       "title": "Thank you",
-      "narration": "Before anything else: thank you. For the land, and for everything you have done for this family over the years. Matteo and Amber know this is a big ask. That is why they did not come with a wish. They came with a careful plan.",
+      "narration": "[sincerely] [slowly] Before anything else: thank you. For the land, and for everything you have done for this family over the years. [softly] Matteo and Amber know this is a big ask. That is why they did not come with a wish. [warmly] They came with a careful plan.",
       "beats": [
         "Thank you",
         "This is a big ask. So here is a careful plan."
@@ -52,7 +52,7 @@
     {
       "id": 4,
       "title": "The plan",
-      "narration": "Here is the plan in one picture. The home would cost about {w:home_cost}. Selling their current home would cover about {w:from_home_sale} of that. The remaining {w:loan_amount} is what they are hoping to borrow from you, and pay back in full.",
+      "narration": "[warmly] [slowly] Here is the plan in one picture. The home would cost about {w:home_cost}. Selling their current home would cover about {w:from_home_sale} of that. The remaining {w:loan_amount} is what they are hoping to borrow from you... and pay back in full.",
       "beats": [
         "About {home_cost_k} to build",
         "About {from_home_sale_k} from selling their current home",
@@ -68,7 +68,7 @@
     {
       "id": 5,
       "title": "Why we need help",
-      "narration": "Today, Matteo and Amber pay about {w:today_payment} a month on their mortgage, at a rate near two and a half percent. Building means giving that rate up. At today's bank rate of {w:market_rate_pct}, the payment on a {w:loan_amount_adj} loan would be about {w:monthly_market} a month. Nearly triple what they pay now. That is the number that makes the build impossible. At a family rate of around three percent, the payment would be about {w:monthly_family}. Still a real step up, but one they can carry. Over thirty years, the difference in interest is about {w:interest_gap_rounded}. That is the gap a family rate closes.",
+      "narration": "[calmly] [slowly] Today, Matteo and Amber pay about {w:today_payment} a month on their mortgage, at a rate near two and a half percent. Building means giving that rate up. At today's bank rate of {w:market_rate_pct}, the payment on a {w:loan_amount_adj} loan would be about {w:monthly_market} a month. [softly] Nearly triple what they pay now. That is the number that makes the build impossible. [warmly] At a family rate of around three percent, the payment would be about {w:monthly_family}. Still a real step up, but one they can carry. [calmly] Over thirty years, the difference in interest is about {w:interest_gap_rounded}. That is the gap a family rate closes.",
       "beats": [
         "Today: {monthly_today} a month",
         "Bank rate ({market_rate_pct}): {monthly_market} a month",
@@ -88,7 +88,7 @@
     {
       "id": 6,
       "title": "What we're asking",
-      "narration": "So here is the ask. A thirty year family loan of about {w:loan_amount}, at a rate below market. Three percent is the example used here. The actual rate is yours to decide. This is not a gift. Matteo and Amber would pay every month, for thirty years, until it is fully repaid. And to be clear, you could earn more elsewhere. This is help, not an investment. What you would get is family across the street.",
+      "narration": "[sincerely] [slowly] So here is the ask. A thirty year family loan of about {w:loan_amount}, at a rate below market. Three percent is the example used here. The actual rate is yours to decide. [calmly] This is not a gift. Matteo and Amber would pay every month, for thirty years, until it is fully repaid. [softly] And to be clear, you could earn more elsewhere. This is help, not an investment. [warmly] What you would get is family across the street.",
       "beats": [
         "A 30 year family loan of about {loan_amount_k}",
         "A rate below market. 3% is only the example.",
@@ -106,7 +106,7 @@
     {
       "id": 7,
       "title": "Done properly",
-      "narration": "And it would be done properly, the way a bank would do it. A written loan agreement, drawn up by an attorney. Recorded against the home, just like a bank mortgage, so the loan is fully secured. Payments made through an independent loan servicer, so there are always clear records for everyone. Matteo and Amber would pay every cost of setting it up. And because a family rate is below the IRS minimum, a small amount of tax might come up on your side. They would cover that, every year. They will confirm every detail with an attorney and a CPA.",
+      "narration": "[calmly] [slowly] And it would be done properly, the way a bank would do it. A written loan agreement, drawn up by an attorney. Recorded against the home, just like a bank mortgage, so the loan is fully secured. Payments made through an independent loan servicer, so there are always clear records for everyone. Matteo and Amber would pay every cost of setting it up. [softly] And because a family rate is below the IRS minimum, a small amount of tax might come up on your side. They would cover that, every year. [warmly] They will confirm every detail with an attorney and a CPA.",
       "beats": [
         "A written loan agreement",
         "Recorded against the home, like a bank mortgage",
@@ -124,7 +124,7 @@
     {
       "id": 8,
       "title": "Let's talk",
-      "narration": "That is the picture. A home across the street from Papa and Grandee, done carefully and fairly. No answer is needed tonight. Matteo and Amber would love your questions.",
+      "narration": "[warmly] [slowly] That is the picture. A home across the street from Papa and Grandee, done carefully and fairly. [softly] No answer is needed tonight. [warmly] Matteo and Amber would love your questions. [chuckles] And Lucas probably has a few of his own.",
       "beats": [
         "No answer needed tonight.",
         "We'd love your questions."

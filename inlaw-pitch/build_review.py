@@ -1,4 +1,4 @@
-import json, html
+import json, html, re as _re
 s=json.load(open('script.json')); d=json.load(open('deck.json')); f=json.load(open('figures.json'))
 D=f['display']; I=f['inputs']
 E=html.escape
@@ -6,18 +6,20 @@ WPM=135
 def secs(t): return len(t.split())/WPM*60
 
 voices=[
- dict(name="Alexander", id="UMnEnzK9QLLdRwnUyxMW", who="Male, American, middle-aged",
-      why="Described as warm, grounded, sincere and never showy. The steadiest fit for an older audience on a TV and for third-person narration that should feel like a trusted friend, not an announcer.",
-      sample="https://storage.googleapis.com/eleven-public-prod/database/workspace/30098195f77a4b60ba839c650aba4105/voices/UMnEnzK9QLLdRwnUyxMW/c887506d-1a79-4078-bcf7-6160ceb82189.mp3"),
- dict(name="Kimberly", id="w2CTE3MYza6FgBnETYNT", who="Female, American",
-      why="Warm, calm, with a steady reassuring cadence. Clear without being dramatic. A softer register that may suit the thank-you and family scenes especially well.",
-      sample="https://api.us.elevenlabs.io/v1/voices/w2CTE3MYza6FgBnETYNT/previews/audio?payload=eyJ2b2ljZV9zb3VyY2UiOiJjdXN0b20iLCJ3b3Jrc3BhY2VfaWQiOiI0NWRjNTY3ZDM5OWU0ZjQ3YjhhODZjNjhkZjU0NDE2OSIsImZpbGVuYW1lIjoianVvYTIwdURSS09CM0xiQ3BTWHcubXAzIiwidGltZXN0YW1wIjoxNzkyNjA5MjAwMDAwMDAwfQ%3D%3D"),
+ dict(name="Chris (chosen)", id="vrZ1gMhrsD9LI0gRKrLh", who="Male, American, middle-aged",
+      why="Warm, resonant, unhurried, with understated humor. Chosen after the test clips; narrates every scene on eleven_v4 with direction tags.",
+      sample="https://storage.googleapis.com/eleven-public-prod/database/workspace/049c8d0ba4094eb5ac02cef3cd05aa4a/voices/vrZ1gMhrsD9LI0gRKrLh/JoyPPfk55u1HDEdz0WLv.mp3"),
+ dict(name="Cee Well", id="riqnCDqBJCxuKuDEeenv", who="Male, American (light Southern), middle-aged",
+      why="Deep and warm, grounded and calm. The alternative offered alongside Chris.",
+      sample="https://storage.googleapis.com/eleven-public-prod/database/workspace/c2320bd857734589a823ddc50220da7d/voices/riqnCDqBJCxuKuDEeenv/481831c2-6928-4fab-979b-9f09191cc2e2.mp3"),
 ]
 
-total_words=sum(len(sc['narration'].split()) for sc in s['scenes'])
+total_words=sum(len(_re.sub(r"\[[^\]]+\]\s*", "", sc['narration']).split()) for sc in s['scenes'])
+import re as _re
+def strip_tags(t): return _re.sub(r"\[[^\]]+\]\s*", "", t)
 scene_html=""
 for sc in s['scenes']:
-    w=len(sc['narration'].split()); t=secs(sc['narration'])
+    w=len(strip_tags(sc['narration']).split()); t=secs(strip_tags(sc['narration']))
     beats="".join(f'<li><span class="beat">{E(b)}</span><span class="bw">{len(b.split())} words</span></li>' for b in sc['beats'])
     scene_html+=f'''
 <article class="scene" id="scene{sc['id']}">
@@ -122,7 +124,7 @@ a {{ color:var(--accent); }} a:focus-visible {{ outline:2px solid var(--accent);
 {appx}
 
 <h2>Voice candidates</h2>
-<p>Both are professional narrator voices from the ElevenLabs library with American accents, chosen for warmth and clarity on a TV. I lean Alexander; Kimberly is the real alternative, not a token one.</p>
+<p>Alexander and Kimberly were the first candidates; Matteo found Alexander nasal and asked for two more male options. Chris was chosen. All clips use the eleven_v4 model with direction tags such as [warmly], [softly] and [chuckles], per the ElevenLabs model guide.</p>
 {vhtml}
 <div class="tw"><table>
 <tr><th>Item</th><th class="n">Credits</th><th class="n">Approx. cost</th></tr>

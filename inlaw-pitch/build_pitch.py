@@ -63,7 +63,9 @@ def audio_for(scene_id):
 WPM = 135
 scenes = []
 for sc in S['scenes']:
-    narr = fill(sc['narration'])
+    tts = fill(sc['narration'])                      # what the voice reads, with direction tags
+    narr = re.sub(r"\[[^\]]+\]\s*", "", tts).strip()   # what the viewer sees, tags stripped
+    narr = narr.replace('...', '.')
     sents = re.split(r'(?<=[.!?])\s+', narr)
     starts = []; acc = 0
     for s_ in sents: starts.append(acc); acc += len(s_.split())
