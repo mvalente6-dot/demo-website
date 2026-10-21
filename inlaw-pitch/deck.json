@@ -30,9 +30,9 @@
     {
       "id": 4,
       "title": "Done properly",
-      "content": "A written loan agreement. Recorded against the home, like a bank mortgage, so the loan is fully secured. Payments through an independent loan servicer, so there are always clear records. We pay every cost of setting it up. We cover any extra tax from the below-market rate, every year (estimate: about {extra_tax} in year one, shrinking over time).",
+      "content": "A written loan agreement. Recorded against the home, like a bank mortgage, so the loan is fully secured. We pay every cost of setting it up. We cover any extra tax from the below-market rate, every year (estimate: about {extra_tax} in year one, shrinking over time).",
       "notes": {
-        "Matteo": "We want this to feel like a real loan, because it is one. An attorney writes the agreement. It gets recorded against the house the same way a bank mortgage does. A servicer collects the payment every month and keeps the records, so nobody ever has to chase anyone.",
+        "Matteo": "We want this to feel like a real loan, because it is one. An attorney writes the agreement. It gets recorded against the house the same way a bank mortgage does. Payments go out automatically every month, so nobody ever has to chase anyone.",
         "Amber": "Because the rate is below the IRS minimum for family loans, there may be a small amount of tax on your side each year, on interest you never actually receive. We cover that. Our estimate is around {w:extra_tax} in the first year, and it gets smaller every year after."
       }
     },

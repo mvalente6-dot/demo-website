@@ -72,7 +72,7 @@ for sc in S['scenes']:
     total = acc
     audio, dur = audio_for(sc['id'])
     scenes.append({
-        'id': sc['id'], 'title': sc['title'], 'narration': narr, 'sentences': sents,
+        'id': sc['id'], 'kind': sc['kind'], 'title': sc['title'], 'narration': narr, 'sentences': sents,
         'beats': [fill(b) for b in sc['beats']],
         'cue_frac': [starts[c] / total for c in sc['cues']],
         'sent_frac': [st / total for st in starts],
@@ -196,25 +196,25 @@ def table_svg():
     </svg>'''
 
 def scene_markup(sc):
-    sid = sc['id']; B = sc['beats']
-    if sid == 1:
+    sid = sc['id']; B = sc['beats']; kind = sc['kind']
+    if kind == 'street':
         body = street_svg() + beat_div(0, B[0], 'top') + beat_div(1, B[1], 'top')
-    elif sid == 2:
+    elif kind == 'home':
         body = (f'<div class="layer l0">{street_svg(with_house=True)}</div>'
                 f'<div class="layer l1">{kids_svg()}</div>'
                 f'<div class="layer l2">{barn_svg()}</div>'
                 f'<div class="layer l3">{barn_svg(rain=True)}</div>'
                 f'<div class="layer l4">{table_svg()}</div>'
                 + "".join(beat_div(i, b, "top" if i < 4 else "") for i, b in enumerate(B)))
-    elif sid == 3:
+    elif kind == 'thanks':
         body = ('<div class="center"><div class="thanks measure">Thank you</div><div class="rule"></div></div>'
                 + beat_div(1, B[1], "low"))
-    elif sid == 4:
+    elif kind == 'plan':
         body = f'''<div class="plan">
           <div class="bar"><div class="seg sale"><span class="measure">{E(DISP['from_home_sale_k'])}</span></div><div class="seg loan"><span class="measure">{E(DISP['loan_amount_k'])}</span></div></div>
           <div class="bartotal measure">{E(DISP['home_cost_k'])} to build</div>
         </div>''' + "".join(beat_div(i, b, "low") for i, b in enumerate(B))
-    elif sid == 5:
+    elif kind == 'numbers':
         body = f'''<div class="cards">
           <div class="card c0"><div class="k">Today</div><div class="v measure">{E(DISP['monthly_today'])}</div><div class="s">a month, about 2.5%</div></div>
           <div class="card c1"><div class="k">Bank rate, {E(DISP['market_rate_pct'])}</div><div class="v measure">{E(DISP['monthly_market'])}</div><div class="s">{E(DISP['change_market'])} vs today</div></div>
@@ -225,19 +225,19 @@ def scene_markup(sc):
           <div class="pair"><div><div class="v measure">{E(DISP['total_interest_market_rounded'])}</div><div class="s">at the bank rate</div></div><div class="vs">vs</div><div><div class="v measure">{E(DISP['total_interest_family_rounded'])}</div><div class="s">at about 3%</div></div></div>
           <div class="gap"><span class="measure">The gap a family rate closes: about {E(DISP['interest_gap_rounded'])}</span></div>
         </div>'''
-    elif sid == 6:
-        body = street_svg(with_house=True, faint=True) + '<div class="askcard">' + "".join(f'<div class="line" data-beat="{i}"><span class="measure">{E(b)}</span></div>' for i, b in enumerate(B)) + '</div>'
-    elif sid == 7:
+    elif kind == 'ask':
+        body = street_svg(with_house=False, faint=True) + '<div class="askcard">' + "".join(f'<div class="line" data-beat="{i}"><span class="measure">{E(b)}</span></div>' for i, b in enumerate(B)) + '</div>'
+    elif kind == 'done':
         icons = ['<svg viewBox="0 0 80 80"><rect x="14" y="8" width="52" height="64" rx="6" fill="#FFF" stroke="#1F2A30" stroke-width="5"/><line x1="26" y1="28" x2="54" y2="28" stroke="#1F2A30" stroke-width="5"/><line x1="26" y1="42" x2="54" y2="42" stroke="#1F2A30" stroke-width="5"/><path d="M26 58 q10 -10 20 0" stroke="#B86B28" stroke-width="5" fill="none"/></svg>',
                  '<svg viewBox="0 0 80 80"><polygon points="10,40 40,12 70,40" fill="#B86B28" stroke="#1F2A30" stroke-width="5" stroke-linejoin="round"/><rect x="18" y="40" width="44" height="30" fill="#FFF" stroke="#1F2A30" stroke-width="5"/><circle cx="56" cy="60" r="12" fill="#F3C96B" stroke="#1F2A30" stroke-width="4"/></svg>',
-                 '<svg viewBox="0 0 80 80"><rect x="12" y="10" width="56" height="60" rx="6" fill="#FFF" stroke="#1F2A30" stroke-width="5"/><line x1="22" y1="28" x2="58" y2="28" stroke="#1F2A30" stroke-width="4"/><line x1="22" y1="42" x2="58" y2="42" stroke="#1F2A30" stroke-width="4"/><line x1="22" y1="56" x2="46" y2="56" stroke="#1F2A30" stroke-width="4"/></svg>',
-                 '<svg viewBox="0 0 80 80"><rect x="18" y="8" width="44" height="64" fill="#FFF" stroke="#1F2A30" stroke-width="5"/><polyline points="18,72 26,64 34,72 42,64 50,72 58,64 62,72" fill="none" stroke="#1F2A30" stroke-width="4"/><text x="40" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#B86B28">$</text></svg>']
+                 '<svg viewBox="0 0 80 80"><rect x="18" y="8" width="44" height="64" fill="#FFF" stroke="#1F2A30" stroke-width="5"/><polyline points="18,72 26,64 34,72 42,64 50,72 58,64 62,72" fill="none" stroke="#1F2A30" stroke-width="4"/><text x="40" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#B86B28">$</text></svg>',
+                 '<svg viewBox="0 0 80 80"><polygon points="4,36 22,20 40,36" fill="#7F8C7A" stroke="#1F2A30" stroke-width="4" stroke-linejoin="round"/><rect x="9" y="36" width="26" height="22" fill="#FFF" stroke="#1F2A30" stroke-width="4"/><polygon points="40,36 58,20 76,36" fill="#B86B28" stroke="#1F2A30" stroke-width="4" stroke-linejoin="round"/><rect x="45" y="36" width="26" height="22" fill="#FFF" stroke="#1F2A30" stroke-width="4"/><rect x="0" y="62" width="80" height="8" fill="#8C8B86"/></svg>']
         body = '<div class="checklist">' + "".join(f'<div class="item" data-beat="{i}"><div class="ico">{icons[i]}</div><div class="txt measure">{E(b)}</div><div class="tick">✓</div></div>' for i, b in enumerate(B)) + '</div>'
-    elif sid == 8:
+    elif kind == 'end':
         body = street_svg(with_house=True, lit=True) + '<div class="askcard end">' + "".join(f'<div class="line" data-beat="{i}"><span class="measure">{E(b)}</span></div>' for i, b in enumerate(B)) + '</div>'
     else:
         body = ""
-    return f'<section class="scene s{sid}" data-scene="{sid}" aria-label="Scene {sid}: {E(sc["title"])}">{body}<div class="caption" aria-live="polite"></div></section>'
+    return f'<section class="scene s{sid} k-{kind}" data-scene="{sid}" aria-label="Scene {sid}: {E(sc["title"])}">{body}<div class="caption" aria-live="polite"></div></section>'
 
 scenes_html = "".join(scene_markup(sc) for sc in scenes)
 
@@ -252,7 +252,7 @@ def slide_markup(sl, idx, appendix=False):
           <div><div class="k">Rate</div><div class="v">below market</div><div class="s">{E(DISP['family_rate_pct'])} is the example, not a fixed number</div></div>
           <div><div class="k">Monthly, at {E(DISP['family_rate_pct'])}</div><div class="v">{E(DISP['monthly_family'])}</div><div class="s">vs {E(DISP['monthly_today'])} today</div></div>
         </div>
-        <p class="foot">Fully documented, recorded against the home, paid through a servicer. We cover every cost.</p>'''
+        <p class="foot">Fully documented and recorded against the home, like a bank mortgage. We cover every cost.</p>'''
     elif not appendix and sid == 2:
         body = f'''<h2>Bank rate vs family rate</h2>
         <div class="compare">
@@ -281,7 +281,6 @@ def slide_markup(sl, idx, appendix=False):
     elif not appendix and sid == 4:
         items = ["A written loan agreement, drawn up by an attorney",
                  "Recorded against the home, like a bank mortgage, so the loan is fully secured",
-                 "Payments through an independent loan servicer, so there are always clear records",
                  "We pay every cost of setting it up",
                  f"We cover any extra tax from the below-market rate, every year (about {DISP['extra_tax']} in year one, an estimate, shrinking over time)"]
         body = '<h2>Done properly</h2><ul class="checks">' + "".join(f'<li><span class="tick">✓</span><span>{E(t)}</span></li>' for t in items) + '</ul>'
@@ -358,7 +357,7 @@ body.captions .beat.top { top:60px; }
 body.captions .caption { display:block; }
 body.captions .beat { bottom:150px; }
 /* scene 2 layers */
-.s2.b0 .l0, .s2.b1 .l1, .s2.b2 .l2, .s2.b3 .l3, .s2.b4 .l4 { opacity:1; }
+.k-home.b0 .l0, .k-home.b1 .l1, .k-home.b2 .l2, .k-home.b3 .l3, .k-home.b4 .l4 { opacity:1; }
 .kid { transform-origin:center bottom; animation: sway 4s ease-in-out infinite alternate; }
 .k2 { animation-delay:-1.3s; } .k3 { animation-delay:-2.4s; }
 .ball { animation: bounce 2.6s ease-in-out infinite alternate; }
@@ -372,14 +371,14 @@ body.captions .beat { bottom:150px; }
 .center { position:absolute; inset:0; display:grid; place-items:center; align-content:center; }
 .thanks { font-size:200px; font-weight:700; letter-spacing:-.02em; }
 .rule { width:0; height:12px; background:var(--accent); border-radius:6px; transition:width 2.2s ease; margin-top:10px; }
-.s3.on .rule { width:560px; }
-.s3 .beat.low { bottom:140px; font-size:64px; }
+.k-thanks.on .rule { width:560px; }
+.k-thanks .beat.low { bottom:140px; font-size:64px; }
 /* scene 4 */
 .plan { position:absolute; left:160px; right:160px; top:280px; }
 .bar { height:200px; border:8px solid var(--fg); border-radius:28px; display:flex; overflow:hidden; background:var(--card); }
 .seg { display:flex; align-items:center; justify-content:center; font-size:96px; font-weight:700; color:#fff; width:0; transition:width 1.8s ease; white-space:nowrap; overflow:hidden; }
 .seg.sale { background:#7F8C7A; } .seg.loan { background:var(--accent); }
-.s4.b1 .seg.sale, .s4.b2 .seg.sale { width:33.333%; } .s4.b2 .seg.loan { width:70%; }
+.k-plan.b1 .seg.sale, .k-plan.b2 .seg.sale { width:33.333%; } .k-plan.b2 .seg.loan { width:70%; }
 .bartotal { text-align:center; font-size:72px; font-weight:700; margin-top:36px; }
 /* scene 5 */
 .cards { position:absolute; left:100px; right:100px; top:200px; display:grid; grid-template-columns:repeat(3,1fr); gap:40px; transition:transform 1.2s ease, opacity 1s ease; }
@@ -387,18 +386,18 @@ body.captions .beat { bottom:150px; }
 .card .k { font-size:40px; color:var(--muted); font-weight:700; }
 .card .v { font-size:130px; font-weight:700; line-height:1.05; margin:18px 0 10px; font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
 .card .s { font-size:38px; color:var(--muted); }
-.s5.b0 .c0, .s5.b1 .c0, .s5.b1 .c1, .s5.b2 .c0, .s5.b2 .c1, .s5.b2 .c2 { opacity:1; transform:none; }
-.s5.b3 .cards, .s5.b4 .cards { transform:translateY(-120px) scale(.62); opacity:.5; }
-.s5.b3 .c0, .s5.b3 .c1, .s5.b3 .c2, .s5.b4 .c0, .s5.b4 .c1, .s5.b4 .c2 { opacity:1; transform:none; }
+.k-numbers.b0 .c0, .k-numbers.b1 .c0, .k-numbers.b1 .c1, .k-numbers.b2 .c0, .k-numbers.b2 .c1, .k-numbers.b2 .c2 { opacity:1; transform:none; }
+.k-numbers.b3 .cards, .k-numbers.b4 .cards { transform:translateY(-120px) scale(.62); opacity:.5; }
+.k-numbers.b3 .c0, .k-numbers.b3 .c1, .k-numbers.b3 .c2, .k-numbers.b4 .c0, .k-numbers.b4 .c1, .k-numbers.b4 .c2 { opacity:1; transform:none; }
 .card.c1 { border-color:#C9CFD2; } .card.c2 { border-color:var(--accent); }
 .wide { position:absolute; left:160px; right:160px; top:560px; background:var(--card); border:4px solid var(--accent); border-radius:28px; padding:36px 40px; text-align:center; opacity:0; transform:translateY(20px); transition:opacity 1s ease, transform 1s ease; }
-.s5.b3 .wide, .s5.b4 .wide { opacity:1; transform:none; }
+.k-numbers.b3 .wide, .k-numbers.b4 .wide { opacity:1; transform:none; }
 .wide .k { font-size:40px; color:var(--muted); font-weight:700; }
 .pair { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:40px; margin:12px 0 8px; }
 .pair .v { font-size:116px; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:-.02em; line-height:1.05; }
 .pair .s { font-size:34px; color:var(--muted); } .vs { font-size:48px; color:var(--muted); }
 .gap { font-size:52px; font-weight:700; color:var(--accent); opacity:0; transition:opacity 1s ease; margin-top:6px; }
-.s5.b4 .gap { opacity:1; }
+.k-numbers.b4 .gap { opacity:1; }
 /* scene 6 and 8 */
 .askcard { position:absolute; left:220px; right:220px; top:300px; height:480px; background:rgba(255,253,249,.96); border:4px solid var(--line); border-radius:32px; display:grid; place-items:center; text-align:center; }
 .askcard .line { grid-area:1/1; font-size:84px; font-weight:700; line-height:1.2; padding:0 80px; opacity:0; transition:opacity 1s ease; text-wrap:balance; }
