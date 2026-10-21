@@ -15,6 +15,7 @@
     "afr_long_term_semiannual": 0.0515,
     "afr_source": "IRS Rev. Rul. 2026-19 (October 2026), Table 1, long-term AFR, semiannual column",
     "afr_url": "https://www.irs.gov/pub/irs-drop/rr-26-19.pdf",
+    "gift_exclusion_source": "IRS Rev. Proc. 2025-32, annual gift tax exclusion for 2026, $19,000 per giver per recipient",
     "assumed_tax_rate": 0.3
   },
   "monthly_payment_market": 2769.52,
@@ -25,6 +26,10 @@
   "total_interest_family": 207110,
   "interest_gap": 389917,
   "extra_tax_estimate_per_year": 2600,
+  "foregone_interest_year1": 8600,
+  "interest_received_year1_family": 11900,
+  "gift_exclusion_per_person": 19000,
+  "gift_room_two_givers_two_recipients": 76000,
   "extra_tax_detail": {
     "foregone_interest_year1_simple": 8600,
     "extra_tax_simple": 2580,
@@ -43,13 +48,17 @@
     "total_interest_family": "$207,110",
     "interest_gap": "$389,917",
     "extra_tax": "$2,600",
+    "afr_pct": "5.15%",
+    "foregone_interest": "$8,600",
+    "interest_received_y1": "$11,900",
+    "gift_exclusion": "$19,000",
+    "gift_room": "$76,000",
     "total_interest_market_rounded": "$597,000",
     "total_interest_family_rounded": "$207,000",
     "interest_gap_rounded": "$390,000",
     "home_cost_k": "$600k",
     "from_home_sale_k": "$200k",
     "loan_amount_k": "$400k",
-    "market_date": "October 15, 2026",
-    "afr_pct": "5.15%"
+    "market_date": "October 15, 2026"
   }
 }

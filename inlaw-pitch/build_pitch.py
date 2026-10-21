@@ -233,6 +233,15 @@ def scene_markup(sc):
                  '<svg viewBox="0 0 80 80"><rect x="18" y="8" width="44" height="64" fill="#FFF" stroke="#1F2A30" stroke-width="5"/><polyline points="18,72 26,64 34,72 42,64 50,72 58,64 62,72" fill="none" stroke="#1F2A30" stroke-width="4"/><text x="40" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#B86B28">$</text></svg>',
                  '<svg viewBox="0 0 80 80"><polygon points="4,36 22,20 40,36" fill="#7F8C7A" stroke="#1F2A30" stroke-width="4" stroke-linejoin="round"/><rect x="9" y="36" width="26" height="22" fill="#FFF" stroke="#1F2A30" stroke-width="4"/><polygon points="40,36 58,20 76,36" fill="#B86B28" stroke="#1F2A30" stroke-width="4" stroke-linejoin="round"/><rect x="45" y="36" width="26" height="22" fill="#FFF" stroke="#1F2A30" stroke-width="4"/><rect x="0" y="62" width="80" height="8" fill="#8C8B86"/></svg>']
         body = '<div class="checklist">' + "".join(f'<div class="item" data-beat="{i}"><div class="ico">{icons[i]}</div><div class="txt measure">{E(b)}</div><div class="tick">✓</div></div>' for i, b in enumerate(B)) + '</div>'
+    elif kind == 'irs':
+        body = f'''<div class="ladder">
+          <div class="lrow bank"><div class="lk">Bank rate</div><div class="lbar"><span class="measure">{E(DISP['market_rate_pct'])}</span></div></div>
+          <div class="lrow irsmin"><div class="lk">IRS minimum for family loans</div><div class="lbar"><span class="measure">{E(DISP['afr_pct'])}</span></div></div>
+          <div class="lrow fam"><div class="lk">Family rate, the example</div><div class="lbar"><span class="measure">{E(DISP['family_rate_pct'])}</span></div></div>
+          <div class="note n2"><span class="measure">The difference: taxed as if you received it. They cover it, about {E(DISP['extra_tax'])} in year one.</span></div>
+          <div class="note n3"><span class="measure">The same difference counts as a gift: about {E(DISP['foregone_interest'])} a year, within the yearly allowance.</span></div>
+          <div class="note n4"><span class="measure">Interest you do receive at 3% is taxable, like interest from a bank.</span></div>
+        </div>''' + "".join(beat_div(i, b, "low") for i, b in enumerate(B))
     elif kind == 'end':
         body = street_svg(with_house=True, lit=True) + '<div class="askcard end">' + "".join(f'<div class="line" data-beat="{i}"><span class="measure">{E(b)}</span></div>' for i, b in enumerate(B)) + '</div>'
     else:
@@ -285,12 +294,21 @@ def slide_markup(sl, idx, appendix=False):
                  f"We cover any extra tax from the below-market rate, every year (about {DISP['extra_tax']} in year one, an estimate, shrinking over time)"]
         body = '<h2>Done properly</h2><ul class="checks">' + "".join(f'<li><span class="tick">✓</span><span>{E(t)}</span></li>' for t in items) + '</ul>'
     elif not appendix and sid == 5:
+        body = f'''<h2>How the IRS sees a family loan</h2>
+        <div class="irsgrid">
+          <div class="box"><div class="k">The IRS minimum rate for a loan this long</div><div class="v">{E(DISP['afr_pct'])}</div><div class="s">October 2026. The 3% example is below it, so the difference on {E(DISP['loan_amount_k'])} is about {E(DISP['foregone_interest'])} a year. The IRS treats that difference two ways.</div></div>
+          <div class="box"><div class="k">1. As interest you received</div><div class="v">about {E(DISP['extra_tax'])}</div><div class="s">estimated tax in year one at a 30% rate, shrinking as the balance falls. We cover it every year.</div></div>
+          <div class="box"><div class="k">2. As a gift from you to us</div><div class="v">no gift tax</div><div class="s">about {E(DISP['foregone_interest'])} a year against a yearly allowance of {E(DISP['gift_exclusion'])} per person per recipient, {E(DISP['gift_room'])} of room between the two of you and the two of us.</div></div>
+          <div class="box"><div class="k">Interest you actually receive at 3%</div><div class="v">about {E(DISP['interest_received_y1'])}</div><div class="s">in year one, declining over time. Taxable like interest from a bank.</div></div>
+        </div>
+        <p class="foot small">Family loans are allowed when they look like real loans: a written agreement, a real rate, real monthly payments. We will confirm every detail with an attorney and a CPA.</p>'''
+    elif not appendix and sid == 6:
         body = '''<h2>What we're asking of you</h2>
         <ol class="steps">
           <li><b>Take the time you need.</b> No answer tonight.</li>
           <li><b>Ask us anything,</b> tonight or later.</li>
-          <li><b>If you want to go further,</b> we bring in an attorney and a CPA to confirm every detail.</li>
-          <li><b>Then we build</b> in 2027, across the street.</li>
+          <li><b>If you want to go further,</b> we bring in the professionals and come back with the paperwork.</li>
+          <li><b>If it all lines up,</b> we hope to build in 2027, across the street.</li>
         </ol>
         <p class="foot">Thank you for the land, and for listening.</p>'''
     elif appendix and sid == 'A1':
@@ -398,6 +416,20 @@ body.captions .beat { bottom:150px; }
 .pair .s { font-size:34px; color:var(--muted); } .vs { font-size:48px; color:var(--muted); }
 .gap { font-size:52px; font-weight:700; color:var(--accent); opacity:0; transition:opacity 1s ease; margin-top:6px; }
 .k-numbers.b4 .gap { opacity:1; }
+/* irs ladder */
+.ladder { position:absolute; left:160px; right:160px; top:120px; }
+.lrow { display:grid; grid-template-columns:520px 1fr; align-items:center; gap:30px; margin-bottom:34px; opacity:0; transition:opacity 1s ease; }
+.lk { font-size:40px; font-weight:700; color:var(--muted); text-align:right; }
+.lbar { height:110px; border-radius:20px; display:flex; align-items:center; padding-left:36px; font-size:72px; font-weight:700; color:#fff; font-variant-numeric:tabular-nums; width:0; transition:width 1.6s ease; white-space:nowrap; box-sizing:border-box; }
+.lrow.bank .lbar { background:#8C8B86; } .lrow.irsmin .lbar { background:#5B6166; } .lrow.fam .lbar { background:var(--accent); }
+.k-irs.b0 .lrow.bank, .k-irs.b0 .lrow.fam, .k-irs.b1 .lrow, .k-irs.b2 .lrow, .k-irs.b3 .lrow, .k-irs.b4 .lrow { opacity:1; }
+.k-irs.b0 .lrow.bank .lbar, .k-irs.b1 .lrow.bank .lbar, .k-irs.b2 .lrow.bank .lbar, .k-irs.b3 .lrow.bank .lbar, .k-irs.b4 .lrow.bank .lbar { width:100%; }
+.k-irs.b1 .lrow.irsmin .lbar, .k-irs.b2 .lrow.irsmin .lbar, .k-irs.b3 .lrow.irsmin .lbar, .k-irs.b4 .lrow.irsmin .lbar { width:69.6%; }
+.k-irs.b0 .lrow.fam .lbar, .k-irs.b1 .lrow.fam .lbar, .k-irs.b2 .lrow.fam .lbar, .k-irs.b3 .lrow.fam .lbar, .k-irs.b4 .lrow.fam .lbar { width:40.5%; }
+.k-irs.b4 .lrow.fam .lbar { box-shadow:0 0 0 8px rgba(184,107,40,.25); }
+.ladder .note { margin-top:10px; background:var(--card); border:4px solid var(--accent); border-radius:20px; padding:18px 30px; font-size:40px; font-weight:700; line-height:1.2; opacity:0; transition:opacity 1s ease; display:none; }
+.k-irs.b2 .note.n2, .k-irs.b3 .note.n3, .k-irs.b4 .note.n4 { display:block; opacity:1; }
+.k-irs .beat.low { bottom:50px; font-size:60px; }
 /* scene 6 and 8 */
 .askcard { position:absolute; left:220px; right:220px; top:300px; height:480px; background:rgba(255,253,249,.96); border:4px solid var(--line); border-radius:32px; display:grid; place-items:center; text-align:center; }
 .askcard .line { grid-area:1/1; font-size:84px; font-weight:700; line-height:1.2; padding:0 80px; opacity:0; transition:opacity 1s ease; text-wrap:balance; }
@@ -440,6 +472,12 @@ body.paused #pausebadge { display:block; }
 .big4 .v { font-size:88px; font-weight:700; line-height:1.05; margin:14px 0 10px; font-variant-numeric:tabular-nums; letter-spacing:-.02em; text-wrap:balance; }
 .big4 .s { font-size:30px; color:var(--muted); }
 .big4.live { grid-template-columns:repeat(3,1fr); margin-top:40px; }
+.irsgrid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+.irsgrid .box { background:var(--card); border:4px solid var(--line); border-radius:24px; padding:26px 30px; min-width:0; }
+.irsgrid .k { font-size:28px; color:var(--muted); font-weight:700; }
+.irsgrid .v { font-size:64px; font-weight:700; line-height:1.05; margin:10px 0 8px; font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+.irsgrid .s { font-size:26px; color:var(--muted); line-height:1.3; }
+.slide .foot.small { font-size:30px; margin-top:24px; }
 .foot { font-size:40px; color:var(--muted); margin:48px 0 0; text-wrap:balance; }
 .compare { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
 .col { background:var(--card); border:4px solid var(--line); border-radius:24px; padding:30px 40px; }

@@ -52,6 +52,8 @@ extra_tax_simple = foregone_simple * TAX_RATE
 extra_tax_amort = (int_afr_y1 - int_fam_y1) * TAX_RATE
 extra_tax_rounded = int(round(extra_tax_simple / 100.0) * 100)
 
+int_fam_received_y1 = first_year_interest(LOAN, FAMILY_RATE, N)
+GIFT_EXCLUSION = 19_000   # annual gift tax exclusion per giver per recipient; verified for 2026 before use
 fig = {
     "generated": datetime.date.today().isoformat(),
     "inputs": {
@@ -69,6 +71,7 @@ fig = {
         "afr_long_term_semiannual": AFR_LONG_TERM_SEMIANNUAL,
         "afr_source": AFR_SOURCE,
         "afr_url": "https://www.irs.gov/pub/irs-drop/rr-26-19.pdf",
+        "gift_exclusion_source": "IRS Rev. Proc. 2025-32, annual gift tax exclusion for 2026, $19,000 per giver per recipient",
         "assumed_tax_rate": TAX_RATE
     },
     "monthly_payment_market": round(pm_market, 2),
@@ -79,6 +82,10 @@ fig = {
     "total_interest_family": round(ti_family),
     "interest_gap": round(ti_market - ti_family),
     "extra_tax_estimate_per_year": extra_tax_rounded,
+    "foregone_interest_year1": int(round(foregone_simple / 100.0) * 100),
+    "interest_received_year1_family": int(round(int_fam_received_y1 / 100.0) * 100),
+    "gift_exclusion_per_person": GIFT_EXCLUSION,
+    "gift_room_two_givers_two_recipients": GIFT_EXCLUSION * 4,
     "extra_tax_detail": {
         "foregone_interest_year1_simple": round(foregone_simple),
         "extra_tax_simple": round(extra_tax_simple),
@@ -96,7 +103,16 @@ fig = {
         "total_interest_market": f"${ti_market:,.0f}",
         "total_interest_family": f"${ti_family:,.0f}",
         "interest_gap": f"${ti_market-ti_family:,.0f}",
-        "extra_tax": f"${extra_tax_rounded:,.0f}"
+        "extra_tax": f"${extra_tax_rounded:,.0f}",
+        "afr_pct": f"{AFR_LONG_TERM_SEMIANNUAL*100:.2f}%",
+        "foregone_interest": f"${round(foregone_simple/100.0)*100:,.0f}",
+        "interest_received_y1": f"${round(int_fam_received_y1/100.0)*100:,.0f}",
+        "gift_exclusion": f"${GIFT_EXCLUSION:,.0f}",
+        "gift_room": f"${GIFT_EXCLUSION*4:,.0f}",
+        "total_interest_market_rounded": f"${round(ti_market/1000)*1000:,.0f}",
+        "total_interest_family_rounded": f"${round(ti_family/1000)*1000:,.0f}",
+        "interest_gap_rounded": f"${round((ti_market-ti_family)/1000)*1000:,.0f}",
+        "home_cost_k": "$600k", "from_home_sale_k": "$200k", "loan_amount_k": "$400k", "market_date": "October 15, 2026"
     }
 }
 json.dump(fig, open("figures.json", "w"), indent=2)
