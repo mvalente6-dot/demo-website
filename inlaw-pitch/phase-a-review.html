@@ -1,0 +1,170 @@
+<title>Papa and Grandee Pitch, Phase A</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one reading column; the pitch's own warm light palette, committed single-theme so Matteo previews the real look. */
+:root { --bg:#FAF8F4; --fg:#1F2A30; --muted:#5B6166; --line:#E4DDD1; --card:#FFFDF9; --accent:#B86B28; --accent-soft:#F4E6D6; --ok:#2E7D4F;
+  --display:'Literata', Georgia, 'Times New Roman', serif; --body:'Nunito Sans', 'Segoe UI', Helvetica, Arial, sans-serif; color-scheme: light; }
+body { background:var(--bg); color:var(--fg); font-family:var(--body); font-size:17px; line-height:1.55; padding-block:32px 64px; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); }
+main { max-width:960px; margin:0 auto; }
+h1,h2,h3 { font-family:var(--display); font-weight:600; text-wrap:balance; line-height:1.15; margin:0; }
+h1 { font-size:clamp(30px,5vw,44px); } h2 { font-size:clamp(24px,3.5vw,30px); margin-top:56px; padding-bottom:8px; border-bottom:2px solid var(--accent); }
+h3 { font-size:22px; } h4 { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:14px 0 6px; font-weight:700; }
+p { margin:0 0 10px; max-width:70ch; } .lead { font-size:19px; color:var(--muted); max-width:62ch; }
+.eyebrow { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+.grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); margin-top:16px; }
+.tile { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; min-width:0; }
+.tile .k { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.tile .v { font-family:var(--display); font-size:34px; font-variant-numeric:tabular-nums; margin-top:2px; }
+.tile .s { font-size:14px; color:var(--muted); }
+table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; margin-top:14px; }
+th,td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; } th { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+td.n { text-align:right; } .tw { overflow-x:auto; }
+.scene, .slide, .voice { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin-top:18px; min-width:0; }
+.scene header, .slide header { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 14px; margin-bottom:10px; }
+.num { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); font-weight:700; }
+.meta { font-size:14px; color:var(--muted); }
+.cols { display:grid; gap:12px 28px; grid-template-columns:1.2fr 1fr; } @media (max-width:700px) { .cols { grid-template-columns:1fr; } }
+.cols > div { min-width:0; }
+.narr p { font-size:18px; line-height:1.6; }
+.beats { margin:0; padding-left:20px; } .beats li { margin:4px 0; display:flex; gap:10px; align-items:baseline; } .beat { font-weight:700; } .bw { font-size:12px; color:var(--muted); white-space:nowrap; }
+.vis { font-size:15px; color:var(--muted); }
+.slide .content { font-size:17px; } .notes { background:var(--accent-soft); border-radius:8px; padding:10px 14px; margin-top:8px; } .notes p { font-size:15px; }
+.appendix { border-style:dashed; }
+.voice .who { color:var(--muted); font-size:14px; margin-bottom:6px; }
+ul.plain { padding-left:20px; } ul.plain li { margin:6px 0; }
+.check { display:grid; gap:10px; margin-top:14px; } .check div { display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+.check b { color:var(--accent); font-family:var(--display); font-size:20px; line-height:1; }
+.pill { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent); }
+.pill.ok { background:#E3F1E8; color:var(--ok); }
+a { color:var(--accent); } a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+@media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600&family=Nunito+Sans:wght@400;700&display=swap">
+<main>
+<p class="eyebrow">Phase A review, for Matteo's approval</p>
+<h1>Family loan pitch to Steve and Dawn</h1>
+<p class="lead">Everything below is content, not build. Read it as Steve and Dawn would hear it. Nothing has been recorded yet; the voice test clips wait for your OK.</p>
+
+<h2>What I need from you</h2>
+<div class="check">
+  <div><b>1</b><div><p><b>Approve or edit the script and storyboard.</b> Eight scenes, 568 words, about 4.2 minutes at 135 words per minute. Beats hold 6 to 11 seconds each.</p></div></div>
+  <div><b>2</b><div><p><b>Approve or edit the deck speaker notes</b> (five main slides, two appendix slides).</p></div></div>
+  <div><b>3</b><div><p><b>OK the two voice test clips.</b> Cost about 4 cents each. The clip is scene 1, so you hear how each voice says Grandee, Matteo, Lucas, Owen and Wyatt. The full narration is about 56 cents in the voice you pick.</p></div></div>
+  <div><b>4</b><div><p><b>Answer the open questions</b> at the bottom, or accept my recommendations.</p></div></div>
+</div>
+
+<h2>The numbers (from figures.json)</h2>
+<p>A $400,000 loan over 30 years. Bank rate is Freddie Mac's 30-year average for the week of October 15, 2026. The family rate is the 3% example only.</p>
+<div class="grid">
+  <div class="tile"><div class="k">Today</div><div class="v">$1,000</div><div class="s">per month, about 2.5%</div></div>
+  <div class="tile"><div class="k">Bank rate, 7.40%</div><div class="v">$2,770</div><div class="s">+$1,770 vs today</div></div>
+  <div class="tile"><div class="k">Family rate, about 3%</div><div class="v">$1,686</div><div class="s">+$686 vs today</div></div>
+</div>
+<div class="tw"><table>
+<tr><th>Figure</th><th class="n">Bank rate 7.40%</th><th class="n">Family rate 3%</th><th>Where it appears</th></tr>
+<tr><td>Monthly payment</td><td class="n">$2,770</td><td class="n">$1,686</td><td>Video scene 5, slides 1 to 3</td></tr>
+<tr><td>Change vs today's $1,000</td><td class="n">+$1,770</td><td class="n">+$686</td><td>Slide 2, slider</td></tr>
+<tr><td>Total interest, 30 years</td><td class="n">$597,027</td><td class="n">$207,110</td><td>Scene 5 (rounded to thousands on the TV), slide 2</td></tr>
+<tr><td>The gap a family rate closes</td><td class="n" colspan="2">$389,917</td><td>Scene 5 (as "about $390,000"), slide 2</td></tr>
+<tr><td>Their estimated extra tax, year one (we cover it)</td><td class="n" colspan="2">about $2,600</td><td>Slide 4 notes only. (5.15% IRS minimum minus 3%, on $400,000, times 30%.) Shrinks each year.</td></tr>
+</table></div>
+<p style="margin-top:12px"><span class="pill ok">Sanity check passed</span> 3% over 30 years on $400,000 computes to $1,686.42 a month and $207,110 total interest, matching the brief.</p>
+<p><b>Sources.</b> Freddie Mac Primary Mortgage Market Survey, 30-year fixed, 7.40% as of October 15, 2026 (confirmed against FRED series MORTGAGE30US). IRS Rev. Rul. 2026-19, October 2026, long-term rate, semiannual compounding, 5.15%. Residential construction loans were quoted at roughly 7% to 9% in October 2026 across lender and guide pages; there is no single authoritative figure, so the 30-year rate is used for the comparison and the construction range is noted in the appendix only.</p>
+
+<h2>Part 1: the video, scene by scene</h2>
+<p>Narration is third person throughout. On-screen text is at most 12 words per beat. Timing below assumes 135 words per minute; the build uses the real clip lengths.</p>
+
+<article class="scene" id="scene1">
+  <header><span class="num">Scene 1</span><h3>Across the street</h3><span class="meta">42 words, about 19s, 2 beats, about 9s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>Across the street from Papa and Grandee, there is a piece of land. Steve and Dawn have offered it to Matteo and Amber as a gift. Picture Lucas, Owen, and Wyatt growing up right there, close enough to walk over any time.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">Across the street from Papa and Grandee</span><span class="bw">7 words</span></li><li><span class="beat">Lucas, Owen, and Wyatt, growing up right here</span><span class="bw">8 words</span></li></ol><h4>Picture and motion</h4><p class="vis">Flat illustration: a quiet two-lane street. Papa and Grandee&#x27;s house on the left with a porch light on. An open, grassy lot on the right. Slow, subtle drift of clouds; the lot gently brightens as the second beat lands.</p></div>
+  </div>
+</article>
+<article class="scene" id="scene2">
+  <header><span class="num">Scene 2</span><h3>What this home would mean</h3><span class="meta">100 words, about 44s, 5 beats, about 9s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>This would be the home Matteo and Amber hope to build, the one they would raise their boys in. Room for Lucas, Owen, and Wyatt to run, play outside, and just be boys. And one special piece: a sports barn, attached to the house, with open space for a basketball hoop, a soccer goal, a climbing wall, and a jungle gym, plus room for a home gym for Matteo. A place for the boys, and the whole family, to play year round, rain or shine. Most of all, Papa and Grandee would be part of everyday life, not just holidays.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">The home they hope to raise their boys in</span><span class="bw">9 words</span></li><li><span class="beat">Room to run, play outside, and just be boys</span><span class="bw">9 words</span></li><li><span class="beat">A sports barn: hoop, goal, climbing wall, jungle gym</span><span class="bw">9 words</span></li><li><span class="beat">Year round, rain or shine, for the whole family</span><span class="bw">9 words</span></li><li><span class="beat">Papa and Grandee, part of everyday life</span><span class="bw">7 words</span></li></ol><h4>Picture and motion</h4><p class="vis">Beat 1: simple house outline appears on the lot. Beat 2: three small figures (not realistic) running on the grass, a ball in the air. Beat 3: the barn attached to the house, cutaway showing a hoop, a goal, a climbing wall, and a jungle gym; a small gym corner. Beat 4: soft rain over the barn roof, warm light inside. Beat 5: a family table with chairs for everyone, the two houses visible through a window.</p></div>
+  </div>
+</article>
+<article class="scene" id="scene3">
+  <header><span class="num">Scene 3</span><h3>Thank you</h3><span class="meta">45 words, about 20s, 2 beats, about 10s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>Before anything else: thank you. For the land, and for everything you have done for this family over the years. Matteo and Amber know this is a big ask. That is why they did not come with a wish. They came with a careful plan.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">Thank you</span><span class="bw">2 words</span></li><li><span class="beat">This is a big ask. So here is a careful plan.</span><span class="bw">11 words</span></li></ol><h4>Picture and motion</h4><p class="vis">Beat 1: a single large &#x27;Thank you&#x27; on the warm background, the accent color underline drawing in slowly. Beat 2: the words hold, then a thin folder or page icon appears beside them.</p></div>
+  </div>
+</article>
+<article class="scene" id="scene4">
+  <header><span class="num">Scene 4</span><h3>The plan</h3><span class="meta">47 words, about 21s, 3 beats, about 7s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>Here is the plan in one picture. The home would cost about six hundred thousand dollars. Selling their current home would cover about two hundred thousand of that. The remaining four hundred thousand is what they are hoping to borrow from you, and pay back in full.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">About $600k to build</span><span class="bw">4 words</span></li><li><span class="beat">About $200k from selling their current home</span><span class="bw">7 words</span></li><li><span class="beat">About $400k as a family loan</span><span class="bw">6 words</span></li></ol><h4>Picture and motion</h4><p class="vis">One horizontal bar: $600k total. It fills left to right in two segments as the narration lands: $200k (sale of current home) then $400k (family loan), each labeled underneath in large type.</p></div>
+  </div>
+</article>
+<article class="scene" id="scene5">
+  <header><span class="num">Scene 5</span><h3>Why we need help</h3><span class="meta">125 words, about 56s, 5 beats, about 11s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>Today, Matteo and Amber pay about one thousand dollars a month on their mortgage, at a rate near two and a half percent. Building means giving that rate up. At today&#x27;s bank rate of seven point four percent, the payment on a four hundred thousand dollar loan would be about two thousand seven hundred seventy dollars a month. Nearly triple what they pay now. That is the number that makes the build impossible. At a family rate of around three percent, the payment would be about one thousand six hundred eighty six dollars. Still a real step up, but one they can carry. Over thirty years, the difference in interest is about three hundred ninety thousand dollars. That is the gap a family rate closes.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">Today: $1,000 a month</span><span class="bw">4 words</span></li><li><span class="beat">Bank rate (7.40%): $2,770 a month</span><span class="bw">6 words</span></li><li><span class="beat">Family rate (about 3%): $1,686 a month</span><span class="bw">7 words</span></li><li><span class="beat">Interest over 30 years: $597,000 vs $207,000</span><span class="bw">7 words</span></li><li><span class="beat">The gap a family rate closes: about $390,000</span><span class="bw">8 words</span></li></ol><h4>Picture and motion</h4><p class="vis">Three big-number cards appear one at a time, left to right: Today / Bank rate / Family rate. Each shows the monthly figure at 110px+ and a small &#x27;vs today&#x27; line (+$1,770, +$686). The family card is calm, not celebratory. Then the three cards slide back and one wide card shows total interest at each rate with the gap labeled &#x27;the gap a family rate closes&#x27;. All figures from figures.json.</p></div>
+  </div>
+</article>
+<article class="scene" id="scene6">
+  <header><span class="num">Scene 6</span><h3>What we&#x27;re asking</h3><span class="meta">79 words, about 35s, 4 beats, about 9s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>So here is the ask. A thirty year family loan of about four hundred thousand dollars, at a rate below market. Three percent is the example used here. The actual rate is yours to decide. This is not a gift. Matteo and Amber would pay every month, for thirty years, until it is fully repaid. And to be clear, you could earn more elsewhere. This is help, not an investment. What you would get is family across the street.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">A 30 year family loan of about $400k</span><span class="bw">8 words</span></li><li><span class="beat">A rate below market. 3% is only the example.</span><span class="bw">9 words</span></li><li><span class="beat">Not a gift. Paid every month, until fully repaid.</span><span class="bw">9 words</span></li><li><span class="beat">Help, not an investment. Family across the street.</span><span class="bw">8 words</span></li></ol><h4>Picture and motion</h4><p class="vis">A single card in the center with the four lines replacing one another by crossfade. The street illustration from scene 1 sits faintly behind the card.</p></div>
+  </div>
+</article>
+<article class="scene" id="scene7">
+  <header><span class="num">Scene 7</span><h3>Done properly</h3><span class="meta">101 words, about 45s, 4 beats, about 11s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>And it would be done properly, the way a bank would do it. A written loan agreement, drawn up by an attorney. Recorded against the home, just like a bank mortgage, so the loan is fully secured. Payments made through an independent loan servicer, so there are always clear records for everyone. Matteo and Amber would pay every cost of setting it up. And because a family rate is below the IRS minimum, a small amount of tax might come up on your side. They would cover that, every year. They will confirm every detail with an attorney and a CPA.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">A written loan agreement</span><span class="bw">4 words</span></li><li><span class="beat">Recorded against the home, like a bank mortgage</span><span class="bw">8 words</span></li><li><span class="beat">Payments through an independent servicer. Clear records.</span><span class="bw">7 words</span></li><li><span class="beat">They pay every cost, and cover any extra tax</span><span class="bw">9 words</span></li></ol><h4>Picture and motion</h4><p class="vis">A simple checklist that fills one line at a time, each with a soft check mark in the accent color. Icons: a signed page, a house with a small seal, a ledger, a receipt.</p></div>
+  </div>
+</article>
+<article class="scene" id="scene8">
+  <header><span class="num">Scene 8</span><h3>Let&#x27;s talk</h3><span class="meta">29 words, about 13s, 2 beats, about 6s each</span></header>
+  <div class="cols">
+    <div class="narr"><h4>Narration</h4><p>That is the picture. A home across the street from Papa and Grandee, done carefully and fairly. No answer is needed tonight. Matteo and Amber would love your questions.</p></div>
+    <div><h4>On screen</h4><ol class="beats"><li><span class="beat">No answer needed tonight.</span><span class="bw">4 words</span></li><li><span class="beat">We&#x27;d love your questions.</span><span class="bw">4 words</span></li></ol><h4>Picture and motion</h4><p class="vis">Return to the scene 1 street, now with the house and barn on the lot and lights on in both homes. The two lines fade in over it. The card holds until the next key or click, which enters the deck.</p></div>
+  </div>
+</article>
+
+<h2>Part 2: the discussion deck</h2>
+<p>Five main slides, presenter advanced. Speaker notes are split between Matteo and Amber. Slide 3 is the live slider.</p>
+<article class="slide"><header><span class="num">Slide 1</span><h3>The ask, in one view</h3></header><p class="content">A family loan of about $400,000. 30 years. A rate below market (3% is the example). Monthly payment at 3%: $1,686. Figures from figures.json.</p><div class="notes"><h4>Speaker notes</h4><p><b>Matteo:</b> Everything you just saw comes down to this one slide. About four hundred thousand, over thirty years, at a rate below what a bank would charge. Three percent is only the example we used for the math. The rate is yours to decide.</p><p><b>Amber:</b> We know it is a lot to take in. We are not looking for an answer tonight. We just wanted you to see the whole picture in one place.</p></div></article><article class="slide"><header><span class="num">Slide 2</span><h3>Bank rate vs family rate</h3></header><p class="content">Side by side: monthly payment ($2,770 vs $1,686), change vs today&#x27;s $1,000 (+$1,770 vs +$686), total interest over 30 years ($597,027 vs $207,110). Gap: $389,917.</p><div class="notes"><h4>Speaker notes</h4><p><b>Matteo:</b> This is the honest version. Even at a family rate, our payment goes up by almost seven hundred dollars a month. We have budgeted for that and we can carry it. At the bank rate, it goes up by seventeen hundred, and that is the number that stops the build.</p><p><b>Amber:</b> The big number on the right is the interest over thirty years. That gap is what a family rate closes for us. It is not money you lose, since you could earn more elsewhere either way. It is the difference between building and not building.</p></div></article><article class="slide"><header><span class="num">Slide 3</span><h3>Try the numbers</h3></header><p class="content">Interactive. Sliders: loan amount $300k to $450k (default $400k), rate 2.5% to market (7.40%). Shows our monthly payment, change vs today, and the difference vs a bank loan at the same amount. Recomputed live from the same formula as figures.json.</p><div class="notes"><h4>Speaker notes</h4><p><b>Matteo:</b> If you want to see what a different amount or rate looks like, we can move these right now. Nothing here is locked in.</p><p><b>Amber:</b> Feel free to ask us to try anything. We would rather you see it than wonder about it.</p></div></article><article class="slide"><header><span class="num">Slide 4</span><h3>Done properly</h3></header><p class="content">A written loan agreement. Recorded against the home, like a bank mortgage, so the loan is fully secured. Payments through an independent loan servicer, so there are always clear records. We pay every cost of setting it up. We cover any extra tax from the below-market rate, every year (estimate: about $2,600 in year one, shrinking over time).</p><div class="notes"><h4>Speaker notes</h4><p><b>Matteo:</b> We want this to feel like a real loan, because it is one. An attorney writes the agreement. It gets recorded against the house the same way a bank mortgage does. A servicer collects the payment every month and keeps the records, so nobody ever has to chase anyone.</p><p><b>Amber:</b> Because the rate is below the IRS minimum for family loans, there may be a small amount of tax on your side each year, on interest you never actually receive. We cover that. Our estimate is around twenty six hundred dollars in the first year, and it gets smaller every year after.</p></div></article><article class="slide"><header><span class="num">Slide 5</span><h3>What we&#x27;re asking of you, and next steps</h3></header><p class="content">Take the time you need. Ask us anything, tonight or later. If you want to go further, we bring in an attorney and a CPA to confirm every detail. Then we build in 2027.</p><div class="notes"><h4>Speaker notes</h4><p><b>Amber:</b> Here is all we are asking tonight: think it over, and tell us what questions you have. If the answer is not yet, or not like this, that is okay. We would rather hear it.</p><p><b>Matteo:</b> If you want to go further, the next step is ours to arrange. We bring in an attorney and a CPA, they confirm the details, and we come back to you with the paperwork. Thank you for listening to all of this.</p></div></article>
+<h3 style="margin-top:28px">Appendix (only if the conversation goes there)</h3>
+<article class="slide appendix"><header><span class="num">A1</span><h3>Fair to Amber&#x27;s siblings</h3></header><p class="content">If the loan is not fully repaid by the time of inheritance, the unpaid balance comes out of Amber&#x27;s share. The loan is a debt to the estate, not a gift, so no sibling is ever behind because of it.</p><div class="notes"><h4>Speaker notes</h4><p><b>Amber:</b> This one matters to me. If anything is still owed when the time comes, it comes out of my share, not anyone else&#x27;s. The attorney can write that in.</p></div></article><article class="slide appendix"><header><span class="num">A2</span><h3>Sources for the rates</h3></header><p class="content">Bank rate: Freddie Mac Primary Mortgage Market Survey, 30-year fixed, 7.40% for the week of October 15, 2026 (freddiemac.com/pmms). Residential construction loans were quoted around 7% to 9% in October 2026 (secondary sources); the 30-year rate is used for the comparison. IRS minimum family-loan rate: Rev. Rul. 2026-19, October 2026, long-term rate, semiannual compounding, 5.15% (irs.gov/pub/irs-drop/rr-26-19.pdf). Tax estimate assumes a 30% rate. We will confirm every detail with an attorney and CPA.</p><div class="notes"><h4>Speaker notes</h4><p><b>Matteo:</b> These are where the numbers come from. The bank rate is Freddie Mac&#x27;s weekly survey, and we will refresh it the week we talk.</p></div></article>
+
+<h2>Voice candidates</h2>
+<p>Both are professional narrator voices from the ElevenLabs library with American accents, chosen for warmth and clarity on a TV. I lean Alexander; Kimberly is the real alternative, not a token one.</p>
+<article class="voice"><h3>Alexander</h3><p class="who">Male, American, middle-aged</p><p>Described as warm, grounded, sincere and never showy. The steadiest fit for an older audience on a TV and for third-person narration that should feel like a trusted friend, not an announcer.</p><p><a href="https://storage.googleapis.com/eleven-public-prod/database/workspace/30098195f77a4b60ba839c650aba4105/voices/UMnEnzK9QLLdRwnUyxMW/c887506d-1a79-4078-bcf7-6160ceb82189.mp3" target="_blank" rel="noopener">Listen to the library sample</a> (opens in a new tab, this is the voice vendor's own demo, not our script)</p></article><article class="voice"><h3>Kimberly</h3><p class="who">Female, American</p><p>Warm, calm, with a steady reassuring cadence. Clear without being dramatic. A softer register that may suit the thank-you and family scenes especially well.</p><p><a href="https://api.us.elevenlabs.io/v1/voices/w2CTE3MYza6FgBnETYNT/previews/audio?payload=eyJ2b2ljZV9zb3VyY2UiOiJjdXN0b20iLCJ3b3Jrc3BhY2VfaWQiOiI0NWRjNTY3ZDM5OWU0ZjQ3YjhhODZjNjhkZjU0NDE2OSIsImZpbGVuYW1lIjoianVvYTIwdURSS09CM0xiQ3BTWHcubXAzIiwidGltZXN0YW1wIjoxNzkyNjA5MjAwMDAwMDAwfQ%3D%3D" target="_blank" rel="noopener">Listen to the library sample</a> (opens in a new tab, this is the voice vendor's own demo, not our script)</p></article>
+<div class="tw"><table>
+<tr><th>Item</th><th class="n">Credits</th><th class="n">Approx. cost</th></tr>
+<tr><td>One test clip (scene 1), per candidate</td><td class="n">226</td><td class="n">$0.04</td></tr>
+<tr><td>Full narration, 8 clips, one voice</td><td class="n">3,062</td><td class="n">$0.56</td></tr>
+<tr><td>Everything, if both test clips are made</td><td class="n">3,514</td><td class="n">$0.64</td></tr>
+</table></div>
+
+<h2>Self-review</h2>
+<ul class="plain">
+<li><b>Sales-pitch check.</b> Cut "savings" everywhere; the interest difference is always "the gap a family rate closes." Removed any line that framed the loan as good for Steve and Dawn financially. The only benefit named for them is family across the street.</li>
+<li><b>Honesty check.</b> Scene 5 and slide 2 both say the payment still rises by about $686 a month at the family rate. Scene 6 says plainly that they could earn more elsewhere.</li>
+<li><b>Easy to say no.</b> "The home they hope to build" throughout, never "when we move in." Scene 8 and slide 5 say no answer is needed tonight, and Amber's note on slide 5 says "not yet" is okay.</li>
+<li><b>Rate never fixed.</b> 3% is called the example in scenes 5 and 6 and on slide 1; scene 6 says the actual rate is theirs to decide.</li>
+<li><b>Banned words.</b> Automated search of the script and deck found no em or en dashes, no "guarantee," and none of AFR, security deed, Form 709, imputed interest, or amortization. "Attorney and CPA" appears once in the video and once in the deck.</li>
+<li><b>Siblings.</b> Appear only in appendix A1.</li>
+<li><b>Nothing invented about the home.</b> The house is only ever "the home," plus the sports barn as the brief describes it. The illustrations show a house outline, the barn with the listed equipment, a family table, and the street.</li>
+<li><b>Pace.</b> Scene 5 is the longest at about 60 seconds and carries five numbers. I kept it because it is the whole argument; everything else is under 50 seconds.</li>
+</ul>
+
+<h2>Open questions</h2>
+<ul class="plain">
+<li><b>Bank rate refresh.</b> Freddie Mac publishes a new number tomorrow, Thursday October 22. I recommend building on 7.40% now and refreshing figures.json the week you present; every figure, the scene 5 narration and the slider ceiling flow from that one file. The only manual step is re-recording scene 5 if the rate moves. Agree?</li>
+<li><b>Voice.</b> OK to generate the two scene 1 test clips (about 8 cents total)?</li>
+<li><b>Construction loan rate.</b> No single citable number exists. I recommend naming only the 30-year rate in the video and deck, with the 7% to 9% construction range in the appendix sources. Agree?</li>
+<li><b>Who reads the number.</b> Scene 5 narration reads the dollar figures out loud in words. If you'd rather the narrator say "about twenty seven hundred" instead of "two thousand seven hundred seventy," say so.</li>
+<li><b>Anything in the script that doesn't sound like you two?</b> Edit freely; I will carry every change into the build.</li>
+</ul>
+</main>

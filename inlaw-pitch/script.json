@@ -1,0 +1,96 @@
+{
+  "voice_direction": "Warm, unhurried, sincere. Third person throughout. Never speaks as Matteo or Amber.",
+  "scenes": [
+    {
+      "id": 1,
+      "title": "Across the street",
+      "narration": "Across the street from Papa and Grandee, there is a piece of land. Steve and Dawn have offered it to Matteo and Amber as a gift. Picture Lucas, Owen, and Wyatt growing up right there, close enough to walk over any time.",
+      "beats": [
+        "Across the street from Papa and Grandee",
+        "Lucas, Owen, and Wyatt, growing up right here"
+      ],
+      "visual": "Flat illustration: a quiet two-lane street. Papa and Grandee's house on the left with a porch light on. An open, grassy lot on the right. Slow, subtle drift of clouds; the lot gently brightens as the second beat lands."
+    },
+    {
+      "id": 2,
+      "title": "What this home would mean",
+      "narration": "This would be the home Matteo and Amber hope to build, the one they would raise their boys in. Room for Lucas, Owen, and Wyatt to run, play outside, and just be boys. And one special piece: a sports barn, attached to the house, with open space for a basketball hoop, a soccer goal, a climbing wall, and a jungle gym, plus room for a home gym for Matteo. A place for the boys, and the whole family, to play year round, rain or shine. Most of all, Papa and Grandee would be part of everyday life, not just holidays.",
+      "beats": [
+        "The home they hope to raise their boys in",
+        "Room to run, play outside, and just be boys",
+        "A sports barn: hoop, goal, climbing wall, jungle gym",
+        "Year round, rain or shine, for the whole family",
+        "Papa and Grandee, part of everyday life"
+      ],
+      "visual": "Beat 1: simple house outline appears on the lot. Beat 2: three small figures (not realistic) running on the grass, a ball in the air. Beat 3: the barn attached to the house, cutaway showing a hoop, a goal, a climbing wall, and a jungle gym; a small gym corner. Beat 4: soft rain over the barn roof, warm light inside. Beat 5: a family table with chairs for everyone, the two houses visible through a window."
+    },
+    {
+      "id": 3,
+      "title": "Thank you",
+      "narration": "Before anything else: thank you. For the land, and for everything you have done for this family over the years. Matteo and Amber know this is a big ask. That is why they did not come with a wish. They came with a careful plan.",
+      "beats": [
+        "Thank you",
+        "This is a big ask. So here is a careful plan."
+      ],
+      "visual": "Beat 1: a single large 'Thank you' on the warm background, the accent color underline drawing in slowly. Beat 2: the words hold, then a thin folder or page icon appears beside them."
+    },
+    {
+      "id": 4,
+      "title": "The plan",
+      "narration": "Here is the plan in one picture. The home would cost about six hundred thousand dollars. Selling their current home would cover about two hundred thousand of that. The remaining four hundred thousand is what they are hoping to borrow from you, and pay back in full.",
+      "beats": [
+        "About $600k to build",
+        "About $200k from selling their current home",
+        "About $400k as a family loan"
+      ],
+      "visual": "One horizontal bar: $600k total. It fills left to right in two segments as the narration lands: $200k (sale of current home) then $400k (family loan), each labeled underneath in large type."
+    },
+    {
+      "id": 5,
+      "title": "Why we need help",
+      "narration": "Today, Matteo and Amber pay about one thousand dollars a month on their mortgage, at a rate near two and a half percent. Building means giving that rate up. At today's bank rate of seven point four percent, the payment on a four hundred thousand dollar loan would be about two thousand seven hundred seventy dollars a month. Nearly triple what they pay now. That is the number that makes the build impossible. At a family rate of around three percent, the payment would be about one thousand six hundred eighty six dollars. Still a real step up, but one they can carry. Over thirty years, the difference in interest is about three hundred ninety thousand dollars. That is the gap a family rate closes.",
+      "beats": [
+        "Today: $1,000 a month",
+        "Bank rate (7.40%): $2,770 a month",
+        "Family rate (about 3%): $1,686 a month",
+        "Interest over 30 years: $597,000 vs $207,000",
+        "The gap a family rate closes: about $390,000"
+      ],
+      "visual": "Three big-number cards appear one at a time, left to right: Today / Bank rate / Family rate. Each shows the monthly figure at 110px+ and a small 'vs today' line (+$1,770, +$686). The family card is calm, not celebratory. Then the three cards slide back and one wide card shows total interest at each rate with the gap labeled 'the gap a family rate closes'. All figures from figures.json."
+    },
+    {
+      "id": 6,
+      "title": "What we're asking",
+      "narration": "So here is the ask. A thirty year family loan of about four hundred thousand dollars, at a rate below market. Three percent is the example used here. The actual rate is yours to decide. This is not a gift. Matteo and Amber would pay every month, for thirty years, until it is fully repaid. And to be clear, you could earn more elsewhere. This is help, not an investment. What you would get is family across the street.",
+      "beats": [
+        "A 30 year family loan of about $400k",
+        "A rate below market. 3% is only the example.",
+        "Not a gift. Paid every month, until fully repaid.",
+        "Help, not an investment. Family across the street."
+      ],
+      "visual": "A single card in the center with the four lines replacing one another by crossfade. The street illustration from scene 1 sits faintly behind the card."
+    },
+    {
+      "id": 7,
+      "title": "Done properly",
+      "narration": "And it would be done properly, the way a bank would do it. A written loan agreement, drawn up by an attorney. Recorded against the home, just like a bank mortgage, so the loan is fully secured. Payments made through an independent loan servicer, so there are always clear records for everyone. Matteo and Amber would pay every cost of setting it up. And because a family rate is below the IRS minimum, a small amount of tax might come up on your side. They would cover that, every year. They will confirm every detail with an attorney and a CPA.",
+      "beats": [
+        "A written loan agreement",
+        "Recorded against the home, like a bank mortgage",
+        "Payments through an independent servicer. Clear records.",
+        "They pay every cost, and cover any extra tax"
+      ],
+      "visual": "A simple checklist that fills one line at a time, each with a soft check mark in the accent color. Icons: a signed page, a house with a small seal, a ledger, a receipt."
+    },
+    {
+      "id": 8,
+      "title": "Let's talk",
+      "narration": "That is the picture. A home across the street from Papa and Grandee, done carefully and fairly. No answer is needed tonight. Matteo and Amber would love your questions.",
+      "beats": [
+        "No answer needed tonight.",
+        "We'd love your questions."
+      ],
+      "visual": "Return to the scene 1 street, now with the house and barn on the lot and lights on in both homes. The two lines fade in over it. The card holds until the next key or click, which enters the deck."
+    }
+  ]
+}

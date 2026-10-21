@@ -1,0 +1,50 @@
+{
+  "generated": "2026-10-21",
+  "inputs": {
+    "loan_amount": 400000,
+    "term_years": 30,
+    "home_cost": 600000,
+    "from_home_sale": 200000,
+    "today_payment": 1000,
+    "today_rate": 0.025,
+    "family_rate_example": 0.03,
+    "market_rate": 0.074,
+    "market_rate_source": "Freddie Mac Primary Mortgage Market Survey, 30-year fixed, week of 2026-10-15",
+    "market_rate_url": "https://www.freddiemac.com/pmms",
+    "construction_loan_rate_note": "Residential construction loans were quoted at about 7% to 9% in October 2026 (secondary sources); the 30-year rate above is used for the comparison.",
+    "afr_long_term_semiannual": 0.0515,
+    "afr_source": "IRS Rev. Rul. 2026-19 (October 2026), Table 1, long-term AFR, semiannual column",
+    "afr_url": "https://www.irs.gov/pub/irs-drop/rr-26-19.pdf",
+    "assumed_tax_rate": 0.3
+  },
+  "monthly_payment_market": 2769.52,
+  "monthly_payment_family": 1686.42,
+  "change_vs_today_market": 1769.52,
+  "change_vs_today_family": 686.42,
+  "total_interest_market": 597027,
+  "total_interest_family": 207110,
+  "interest_gap": 389917,
+  "extra_tax_estimate_per_year": 2600,
+  "extra_tax_detail": {
+    "foregone_interest_year1_simple": 8600,
+    "extra_tax_simple": 2580,
+    "extra_tax_amortized_year1": 2574,
+    "note": "Estimate. Interest at the IRS minimum family-loan rate minus interest at the example rate, times an assumed 30% tax rate. Year one is the highest; it shrinks as the balance falls."
+  },
+  "display": {
+    "market_rate_pct": "7.40%",
+    "family_rate_pct": "3%",
+    "monthly_market": "$2,770",
+    "monthly_family": "$1,686",
+    "monthly_today": "$1,000",
+    "change_market": "+$1,770",
+    "change_family": "+$686",
+    "total_interest_market": "$597,027",
+    "total_interest_family": "$207,110",
+    "interest_gap": "$389,917",
+    "extra_tax": "$2,600",
+    "total_interest_market_rounded": "$597,000",
+    "total_interest_family_rounded": "$207,000",
+    "interest_gap_rounded": "$390,000"
+  }
+}
